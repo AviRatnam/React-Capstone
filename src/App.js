@@ -10,10 +10,22 @@ function App() {
       <Title>Capstone</Title>
       <Header>2021</Header>
       <Button> Click </Button>
-      <div class="lg:grid-cols-3 gap-10 py-10 ">
-        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes"></Card>
-        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes"></Card>
-        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes"></Card>
+      <div class="lg:grid grid-cols-3 gap-10 px-10 py-10 ">
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+      
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+      
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+      
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
+        <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
       </div>
       
     </div>
