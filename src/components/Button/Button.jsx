@@ -1,9 +1,11 @@
-//import classnames from 'classnames';
 import buttonClass from "./Button.styles";
-function Button ({children}) {
+
+
+const Button = (props) => {
+
     return (
         <button class={buttonClass}>
-        {children}
+        {props.children}
     </button>
     )
 };
