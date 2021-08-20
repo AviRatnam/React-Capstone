@@ -6,7 +6,8 @@ import Title from './components/Title/Title';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
+      <div class="bg-blue-100">
       <Title>Capstone</Title>
       <Header>2021</Header>
       <Button> Click </Button>
@@ -27,7 +28,7 @@ function App() {
         <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
         <Card title="Mathematics" subtitle="Prof Avi" length="25 Minutes" />
       </div>
-      
+     </div>
     </div>
   );
 }
