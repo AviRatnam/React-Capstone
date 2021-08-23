@@ -5,8 +5,8 @@ const Button = (props) => {
 
     return (
         <button class={buttonClass}>
-        {props.children}
-    </button>
+            {props.children}
+        </button>
     )
 };
 
