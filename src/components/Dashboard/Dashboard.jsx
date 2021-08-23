@@ -1,8 +1,8 @@
-import Card from "../components/Card/Card";
-import SideMenu from "../components/SideMenu/SideMenu";
-import Title from "../components/Title/Title";
-import Header from "../components/Header/Header";
-import Hamburger from "../Hamburger/Hamburger";
+import Card from "../Card/Card";
+import SideMenu from "../SideMenu/SideMenu";
+import Title from "../Title/Title";
+import Header from "../Header/Header";
+import Hamburger from "../../Hamburger/Hamburger";
 
 const Dashboard = () => {
   const subjects = [
