@@ -1,4 +1,4 @@
-const timeclass = `bg-secondary-100
+const timeclass = `bg-green-100
 text-secondary-200
 font-bold
 text-xs
