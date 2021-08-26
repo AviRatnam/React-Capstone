@@ -3,6 +3,8 @@ import SideMenu from "../SideMenu/SideMenu";
 import Title from "../Title/Title";
 import Header from "../Header/Header";
 import Hamburger from "../../Hamburger/Hamburger";
+import Timer from "../Timer/Timer";
+//import { AnimatePresence, Motion } from "framer-motion";
 
 const Dashboard = () => {
   const subjects = [
@@ -51,10 +53,10 @@ const Dashboard = () => {
           <Header> Capstone 2021</Header>
         </div>
         <div id="menu">
-          <SideMenu>Profile</SideMenu>
-          <SideMenu>Testing</SideMenu>
-          <SideMenu>Learning</SideMenu>
-          <SideMenu>Logout</SideMenu>
+          <SideMenu target="#">Profile</SideMenu>
+          <SideMenu target="#">Testing</SideMenu>
+          <SideMenu target="#">Learning</SideMenu>
+          <SideMenu target="#">Logout</SideMenu>
         </div>
         <div class="px-10 py-10 bg-gray-100"></div>
         <div class="px-10 py-12 bg-gray-100"></div>

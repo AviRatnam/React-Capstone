@@ -1,14 +1,12 @@
-import './App.css';
-import Card from './components/Card/Card';
-import SideMenu from './components/SideMenu/SideMenu';
-import LoginCard from './components/LoginCard/LoginCard';
-import Title from './components/Title/Title';
-import Dashboard from './components/Dashboard/Dashboard';
+import "./App.css";
+import QuizNew from "./components/Quiz/QuizNew";
+import ShowQuiz from "./components/Quiz/ShowQuiz";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   return (
-    <div className="App" >
-      <Dashboard />
+    <div className="App">
+      <QuizNew title="Addition" subtitle="Maths"/>
     </div>
   );
 }
