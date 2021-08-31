@@ -1,33 +1,32 @@
-import Title from "../Title/Title";
-import Header from "../Header/Header";
 import quizClass from "./Quiz.styles";
 import QuizCard from "../QuizCard/QuizCard";
 import { useState } from "react";
-import Dashboard from "../Dashboard/Dashboard";
 
 const ShowQuiz = (props) => {
-  console.log(props);
-
   const ShowData = (props) => {
     const data = props;
-    console.log(data.user.length);
 
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const nextQuestion = () => {
-      if (activeIndex >= props.numberofquestions) {
-        console.log("quiz done");
-      } else {
-        console.log("no: of ueiosm", props.numberofquestions);
-        setActiveIndex(activeIndex + 1);
-      }
-    };
+    const changeActiveIndex = (e) => {
+      const next = document.querySelector("#next");
+      const prev = document.querySelector("#prev");
 
-    const prevQuestion = () => {
-      if (activeIndex >= props.numberofquestions) {
-        console.log("dont be here");
-      } else {
-        setActiveIndex(activeIndex - 1);
+      e.currentTarget.id === "next"
+        ? setActiveIndex((activeIndex) => activeIndex + 1)
+        : setActiveIndex((activeIndex) => activeIndex - 1);
+
+      if (activeIndex > 0 && activeIndex < props.numberofquestions) {
+        next.classList.add("hidden");
+      }
+      if (
+        activeIndex !== props.numberofquestions - 2 &&
+        next.classList.contains("hidden")
+      ) {
+        next.classList.remove("hidden");
+      }
+      if (activeIndex !== 1) {
+        prev.classList.remove("hidden");
       }
     };
 
@@ -36,13 +35,19 @@ const ShowQuiz = (props) => {
         <div class="bg-gray-100 px-10 py-10">
           <div key={activeIndex} class={quizClass}>
             <QuizCard
+              questionnumber={activeIndex}
               question={data.user[activeIndex].setup}
               optiona={data.user[activeIndex].punchline}
             />
           </div>
           <div class="justify-between">
-            <button onClick={prevQuestion}>Prev Question</button>
-            <button onClick={nextQuestion}>Next Question</button>
+            <button onClick={changeActiveIndex} id="prev" class="hidden">
+              Prev Question
+            </button>
+
+            <button onClick={changeActiveIndex} id="next" class="">
+              Next Question
+            </button>
           </div>
         </div>
       );

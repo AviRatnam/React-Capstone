@@ -6,22 +6,48 @@ import Timer from "../Timer/Timer";
 import Title from "../Title/Title";
 import quizClass from "./Quiz.styles";
 import Button from "../Button/Button";
+import ShowQuizNew from "./ShowQuizNew";
+import { usePromiseTracker, trackPromise } from "react-promise-tracker";
+import { CalculateScore } from "../QuizCard/QuizCard";
 
 const QuizNew = (props) => {
-  const [userData, getUserData] = useState("");
+  const [questionData, getquestionData] = useState("");
+  const [status, getresponse] = useState(0);
+
+  const LoadingIndicator = (props) => {
+    const { promiseInProgress } = usePromiseTracker();
+
+    //return promiseInProgress && <Header>Loading Quiz...</Header>;
+    if (promiseInProgress) {
+      return <Header>Loading...</Header>;
+    } else {
+      console.log(questionData);
+      return (
+        <ShowQuizNew
+          user={questionData}
+          numberofquestions="6"
+          showQuestions={false}
+          statusCode={status}
+        />
+      );
+    }
+  };
 
   useEffect(() => {
-    getAllUserdata();
+    getAllquestionData();
   }, []);
 
-  const getAllUserdata = () => {
-    axios
-      .get("https://official-joke-api.appspot.com/jokes/ten")
-      .then((response) => {
-        const allUserData = response.data;
-        getUserData(allUserData);
-      })
-      .catch((error) => console.log(`Error: ${error}`));
+  const getAllquestionData = () => {
+    trackPromise(
+      axios
+        .get("http://127.0.0.1:5000/generate?path=a.txt")
+        .then((response) => {
+          const allquestionData = response.data;
+          getresponse(response.status);
+          getquestionData(allquestionData);
+        })
+        .catch((error) => console.log(`Error: ${error}`))
+    );
   };
 
   return (
@@ -33,8 +59,10 @@ const QuizNew = (props) => {
         </div>
         <Timer initialMinute="5" initialSeconds="30" />
       </div>
-      <ShowQuiz user={userData} numberofquestions="6" />
+      <LoadingIndicator />
+
       <Button>End Quiz</Button>
+      <CalculateScore />
     </div>
   );
 };
