@@ -1,15 +1,18 @@
 import SideMenu from "../SideMenu/SideMenu";
 import Header from "../Header/Header";
+import { Link } from "react-router-dom";
 
 const CallSideMenu = () => {
     return(
         <div class="md:col-span-1 bg-gray-100 ">
         <div class="px-10 py-10 bg-gray-100 ">
-          <Header> Capstone 2021</Header>
+          <Link to="/">
+            <Header> Capstone 2021</Header>
+          </Link>
         </div>
         <div id="menu">
           <SideMenu target="#">Profile</SideMenu>
-          <SideMenu target="#">Testing</SideMenu>
+          <SideMenu target="/newquiz">Testing</SideMenu>
           <SideMenu target="#">Learning</SideMenu>
           <SideMenu target="#">Logout</SideMenu>
         </div>

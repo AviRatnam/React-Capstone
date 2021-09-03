@@ -1,12 +1,13 @@
 import SideMenuclass from "./SideMenu.styles";
+import { Link } from "react-router-dom";
 
 const SideMenu = (props) => {
     return(
-        <a href={props.target} onClick={`${props.path}`}>
+        <Link to={props.target}>
             <div class={SideMenuclass}>
                 {props.children}
             </div>
-        </a>
+        </Link>
     )
 }
 

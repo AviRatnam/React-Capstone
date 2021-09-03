@@ -51,12 +51,12 @@ const ShowQuiz = (props) => {
           <div key={activeIndex} class={quizClass}>
             <QuizCard
               questionnumber={activeIndex}
-              questionasked={data.user[activeIndex].question}
-              optiona={data.user[activeIndex].distractors.a}
-              optionb={data.user[activeIndex].distractors.b}
-              optionc={data.user[activeIndex].distractors.c}
-              optiond={data.user[activeIndex].distractors.d}
-              answer={data.user[activeIndex].answer}
+              questionasked={data?.user[activeIndex]?.question}
+              optiona={data?.user[activeIndex]?.distractors?.a}
+              optionb={data?.user[activeIndex]?.distractors?.b}
+              optionc={data?.user[activeIndex]?.distractors?.c}
+              optiond={data?.user[activeIndex]?.distractors?.d}
+              answer={data?.user[activeIndex]?.answer}
             />
           </div>
           <div class="justify-between">
