@@ -14,8 +14,17 @@ const PopupQuizForm = () => {
   const submitQuiz = (e) => {
     e.preventDefault();
     const quizDetails = { quizName, subjectName, minutes, seconds, questions };
-    console.log(quizDetails);
+    
+    fetch("http://localhost:8000/quizzes",{
+      method:'POST',
+      headers: {"Content-Type":"application/JSON"},
+      body: JSON.stringify(quizDetails)
+    }).then(()=>{
+      console.log("new quiz added");
+    })
   };
+
+  //npx json-server --watch data/quiz.json --port 8000
 
   return (
     <div class={quizformstyle}>

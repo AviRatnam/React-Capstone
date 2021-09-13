@@ -44,8 +44,7 @@ const ShowQuiz = (props) => {
     console.log(props.statusCode);
     console.log(props.statusCode === 200);
 
-
-    if (props.statusCode === 200) {
+    if (props.statusCode === 200 || props.statusCode === 304) {
       return (
         <div class="bg-gray-100 px-10 py-10">
           <div key={activeIndex} class={quizClass}>

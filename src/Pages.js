@@ -14,6 +14,9 @@ const Pages = () =>{
             <Route path="/newquiz">
               <CreateTest />
             </Route>
+            <Route path="/takequiz">
+              <QuizNew />
+            </Route>
           </Switch>
         </div>
     )

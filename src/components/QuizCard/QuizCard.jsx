@@ -6,7 +6,6 @@ export const CalculateScore = (props) => {
   const [score, setScore] = useState(0);
   var radios = document.getElementsByTagName("input");
   for (var i = 0; i < radios.length; i++) {
-    
     if (radios[i].type === "radio" && radios[i].checked) {
       let value = radios[i].value;
       if (value === props.answer) {
@@ -26,20 +25,52 @@ export const CalculateScore = (props) => {
 const QuizCard = (props) => {
   console.log(props);
 
-  //const checkedValue = $("input[type='radio'][name='rate']:checked").val();
+  /*
+  const [optionSelected, setOptionSelected] = useState(null);
+  const [question, setQuestion] = useState("");
 
+  const submitAnswer = (e) => {
+    e.preventDefault();
+    const answerDetails = {optionSelected, question};
+
+    fetch("http://localhost:8000/answers",{
+      method:'POST',
+      headers: {"Content-Type":"application/JSON"},
+      body: JSON.stringify(answerDetails)
+    }).then(()=>{
+      console.log("answer inputted");
+    })
+  }*/
+
+  
   return (
     <div class={quizcardclass}>
       <Header>{props.questionasked}</Header>
       <div>{props.questionnumber}</div>
       <form>
-        <input id="op1" type="radio" name={props.optiona} />
+        <input
+          id="op1"
+          type="radio"
+          value={props.optiona}
+        />
         <label>{props.optiona}</label>
-        <input id="op2" type="radio" name={props.optionb} />
+        <input
+          id="op2"
+          type="radio"
+          value={props.optionb}
+        />
         <label>{props.optionb}</label>
-        <input id="op3" type="radio" name={props.optionc} />
+        <input
+          id="op3"
+          type="radio"
+          value={props.optionc}
+        />
         <label>{props.optionc}</label>
-        <input id="op4" type="radio" name={props.optiond} />
+        <input
+          id="op4"
+          type="radio"
+          value={props.optiond}
+        />
         <label>{props.optiond}</label>
       </form>
       <Header>{props.answer}</Header>
