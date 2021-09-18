@@ -10,10 +10,11 @@ const PopupQuizForm = () => {
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(1);
   const [questions, setQuestions] = useState(1);
+  const [pdf, setpdf] = useState(null);
 
   const submitQuiz = (e) => {
     e.preventDefault();
-    const quizDetails = { quizName, subjectName, minutes, seconds, questions };
+    const quizDetails = { quizName, subjectName, minutes, seconds, questions, pdf };
     
     fetch("http://localhost:8000/quizzes",{
       method:'POST',
@@ -73,8 +74,10 @@ const PopupQuizForm = () => {
           max="60"
           defaultValue={seconds}
           onChange={(e) => setSeconds(e.target.value)}
-        />
-        <span>Seconds</span>
+        />  
+        <span>Seconds</span> 
+        <span>Enter pdf</span>
+        <input type="file" onChange={(e)=> setpdf(e.target.value)} />
         <button>Create Quiz</button>
       </form>
     </div>
