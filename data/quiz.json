@@ -1,0 +1,53 @@
+{
+  "quizzes": [
+    {
+      "quizName": "AdditionTest",
+      "subjectName": "MathTest",
+      "minutes": 5,
+      "seconds": 30,
+      "questions": 8,
+      "id": 1
+    },
+    {
+      "quizName": "AnotherTest",
+      "subjectName": "SubjectTest",
+      "minutes": 10,
+      "seconds": 0,
+      "questions": 5,
+      "id": 2
+    },
+    {
+      "quizName": "Metals",
+      "subjectName": "Science",
+      "minutes": "8",
+      "seconds": "10",
+      "questions": "6",
+      "id": 3
+    },
+    {
+      "quizName": "Bewtest",
+      "subjectName": "something",
+      "minutes": "5",
+      "seconds": 1,
+      "questions": "6",
+      "id": 4
+    },
+    {
+      "quizName": "Test1",
+      "subjectName": "Test1",
+      "minutes": "6",
+      "seconds": "6",
+      "questions": "9",
+      "id": 5
+    },
+    {
+      "quizName": "Test2",
+      "subjectName": "Test2",
+      "minutes": "5",
+      "seconds": "10",
+      "questions": "5",
+      "pdf": "C:\\fakepath\\cbse.pdf",
+      "id": 6
+    }
+  ]
+}

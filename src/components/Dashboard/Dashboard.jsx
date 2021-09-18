@@ -2,7 +2,10 @@ import Card from "../Card/Card";
 import SideMenu from "../SideMenu/SideMenu";
 import Title from "../Title/Title";
 import Header from "../Header/Header";
-import Hamburger from "../../Hamburger/Hamburger";
+//import Hamburger from "./Hamburger";
+import Timer from "../Timer/Timer";
+import CallSideMenu from "../CallSideMenu/CallSideMenu";
+//import { AnimatePresence, Motion } from "framer-motion";
 
 const Dashboard = () => {
   const subjects = [
@@ -46,19 +49,7 @@ const Dashboard = () => {
 
   return (
     <div class=" grid md:grid-cols-5 ">
-      <div class="md:col-span-1 bg-gray-100 ">
-        <div class="px-10 py-10 bg-gray-100 ">
-          <Header> Capstone 2021</Header>
-        </div>
-        <div id="menu">
-          <SideMenu>Profile</SideMenu>
-          <SideMenu>Testing</SideMenu>
-          <SideMenu>Learning</SideMenu>
-          <SideMenu>Logout</SideMenu>
-        </div>
-        <div class="px-10 py-10 bg-gray-100"></div>
-        <div class="px-10 py-12 bg-gray-100"></div>
-      </div>
+      <CallSideMenu />
       <div class="col-span-4 px-5 py-5 gap-x-10 gap-y-10 ">
         <div class="text-left px-5 py-3">
           <Title>Begin Learning</Title>

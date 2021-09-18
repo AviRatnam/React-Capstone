@@ -3,15 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^6.2.0",
+    "@craco/craco": "^6.3.0",
     "@tailwindcss/forms": "^0.3.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "autoprefixer": "^9.8.6",
+    "axios": "^0.21.1",
     "classnames": "^2.3.1",
+    "framer-motion": "^4.1.17",
+    "json-server": "^0.16.3",
+    "postcss": "^7.0.36",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-promise-tracker": "^2.1.0",
+    "react-router-dom": "^5.2.1",
     "react-scripts": "4.0.3",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -39,8 +47,6 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "postcss": "^7.0.36",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
+    "@tailwindcss/custom-forms": "^0.2.1"
   }
 }

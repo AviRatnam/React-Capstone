@@ -1,15 +1,17 @@
-import './App.css';
-import Card from './components/Card/Card';
-import SideMenu from './components/SideMenu/SideMenu';
-import LoginCard from './components/LoginCard/LoginCard';
-import Title from './components/Title/Title';
-import Dashboard from './components/Dashboard/Dashboard';
+import "./App.css";
+
+import { BrowserRouter as Router } from "react-router-dom";
+import Pages from "./Pages";
 
 function App() {
+  //
+
   return (
-    <div className="App" >
-      <Dashboard />
-    </div>
+    <Router>
+      <div className="App">
+        <Pages />
+      </div>
+    </Router>
   );
 }
 
