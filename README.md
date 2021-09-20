@@ -1,4 +1,4 @@
-`#Capstone Project`
+# Capstone Project
 
 This is our Capstone Project under the guidance of PES University in the academic year of 2021.
 The contributors are Avinash Ratnam, Harichandana Magapu, Vibha Kurpad, Rithik Mali.
