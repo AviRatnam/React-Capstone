@@ -3,6 +3,7 @@
     {
       "quizName": "AdditionTest",
       "subjectName": "MathTest",
+      "topic": "A topic",
       "minutes": 5,
       "seconds": 30,
       "questions": 8,
@@ -11,6 +12,7 @@
     {
       "quizName": "AnotherTest",
       "subjectName": "SubjectTest",
+      "topic": "A topic",
       "minutes": 10,
       "seconds": 0,
       "questions": 5,
@@ -19,6 +21,7 @@
     {
       "quizName": "Metals",
       "subjectName": "Science",
+      "topic": "A topic",
       "minutes": "8",
       "seconds": "10",
       "questions": "6",
@@ -27,27 +30,11 @@
     {
       "quizName": "Bewtest",
       "subjectName": "something",
+      "topic": "A topic",
       "minutes": "5",
       "seconds": 1,
       "questions": "6",
       "id": 4
-    },
-    {
-      "quizName": "Test1",
-      "subjectName": "Test1",
-      "minutes": "6",
-      "seconds": "6",
-      "questions": "9",
-      "id": 5
-    },
-    {
-      "quizName": "Test2",
-      "subjectName": "Test2",
-      "minutes": "5",
-      "seconds": "10",
-      "questions": "5",
-      "pdf": "C:\\fakepath\\cbse.pdf",
-      "id": 6
     }
   ]
 }
