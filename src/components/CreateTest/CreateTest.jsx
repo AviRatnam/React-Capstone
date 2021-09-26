@@ -14,7 +14,7 @@ const CreateTest = () => {
   useEffect(() => {
     const abortCont = new AbortController();
 
-    fetch("http://localhost:8000/quizzes", { signal: abortCont.signal })
+    fetch("https://capstone.rithik.xyz/qjson/quizzes", { signal: abortCont.signal })
       .then((res) => {
         return res.json();
       })
