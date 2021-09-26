@@ -9,9 +9,10 @@ const AddQuizCard = ({ quizdata }) => {
   const history = useHistory();
 
   const deleteQuiz = (id) => {
-    fetch("http://localhost:8000/quizzes/" + id, {
+    fetch("https://capstone.rithik.xyz/qjson/quizzes/" + id, {
       method: "DELETE",
     }).then(() => {
+      console.log("https://capstone.rithik.xyz/qjson/quizzes/" + id);
       history.push("/");
     });
   };

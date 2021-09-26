@@ -40,7 +40,7 @@ const QuizNew = (props) => {
   const getAllquestionData = () => {
     trackPromise(
       axios
-        .get("http://127.0.0.1:5000/generate?path=a.txt")
+        .get("https://capstone.rithik.xyz/api/generate?path=a.txt")
         .then((response) => {
           const allquestionData = response.data;
           getresponse(response.status);

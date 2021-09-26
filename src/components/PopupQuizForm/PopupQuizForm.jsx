@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 const PopupQuizForm = () => {
   const quizformstyle = `rounded-lg shadow-lg text-gray-700 px-10 py-10 flex-initial flex items-center object-right-top transition `;
   const borderstyle = `border-2 border-gray-200 rounded-md`;
+  const apipath = "https://capstone.rithik.xyz/api/gettext?src=";
 
   const [quizName, setQuizName] = useState("");
   const [subjectName, setSubjectName] = useState("");
@@ -25,15 +26,24 @@ const PopupQuizForm = () => {
       pdf,
     };
 
-    //localhost:5000/getext?src=cbse.pdf&dst=ab.txt
-
-    fetch("http://localhost:8000/quizzes", {
+    fetch("https://capstone.rithik.xyz/qjson/quizzes", {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
       body: JSON.stringify(quizDetails),
     }).then(() => {
       console.log("new quiz added");
+      console.log(pdf);
     });
+
+    fetch(apipath+pdf,{
+      method: "POST"
+    })
+    .then(
+      console.log(apipath+pdf)
+    )
+    .catch((e=>{
+      console.error(e);
+    }))
   };
 
   //npx json-server --watch data/quiz.json --port 8000
