@@ -34,13 +34,9 @@ const QuizNew = (props) => {
   };
 
   useEffect(() => {
-    getAllquestionData();
-  }, []);
-
-  const getAllquestionData = () => {
     trackPromise(
       axios
-        .get("https://capstone.rithik.xyz/api/generate?path=a.txt")
+        .get("http://localhost:8080/quizzes")
         .then((response) => {
           const allquestionData = response.data;
           getresponse(response.status);
@@ -48,7 +44,7 @@ const QuizNew = (props) => {
         })
         .catch((error) => console.log(`Error: ${error}`))
     );
-  };
+  }, []);
 
   return (
     <div class="bg-gray-100 px-10 py-10">
