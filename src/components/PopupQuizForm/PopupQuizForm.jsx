@@ -12,7 +12,7 @@ const PopupQuizForm = () => {
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(1);
   const [questions, setQuestions] = useState(1);
-  const [pdf, setpdf] = useState(null);
+  const [pdf, setpdf] = useState("");
 
   const submitQuiz = (e) => {
     e.preventDefault();
@@ -32,18 +32,20 @@ const PopupQuizForm = () => {
       body: JSON.stringify(quizDetails),
     }).then(() => {
       console.log("new quiz added");
-      console.log(pdf);
     });
 
-    fetch(apipath+pdf,{
-      method: "POST"
+    fetch(apipath + pdf, {
+      method: "POST",
     })
-    .then(
-      console.log(apipath+pdf)
-    )
-    .catch((e=>{
-      console.error(e);
-    }))
+      .then(console.log(apipath + pdf))
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+
+  const getpdfname = (path) => {
+    setpdf(path.replace(/^.*[\\\/]/, ""));
+    //console.log(path.replace(/^.*[\\\/]/, ''));
   };
 
   //npx json-server --watch data/quiz.json --port 8000
@@ -106,7 +108,7 @@ const PopupQuizForm = () => {
         />
         <span>Seconds</span>
         <span>Enter pdf</span>
-        <input type="file" onChange={(e) => setpdf(e.target.value)} />
+        <input type="file" onChange={(e) => getpdfname(e.target.value)} />
         <button>Create Quiz</button>
       </form>
     </div>

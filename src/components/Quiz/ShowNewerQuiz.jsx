@@ -1,0 +1,108 @@
+import { useState, useEffect } from "react";
+import QuizReport from "./QuizReport";
+
+const ShowNewerQuiz = () => {
+  const [info, setinfo] = useState(null);
+  const [showinfo, setshowinfo] = useState(false);
+
+  const [score, setscore] = useState(0);
+  const [activeindex, setactiveindex] = useState(0);
+
+  const [showloading, setshowloading] = useState(true);
+  const [showbutton, setshowbutton] = useState(false);
+  const [showreport, setshowreport] = useState(false);
+  const [questionscorrect, setquestionscorrect] = useState([]);
+  const [questionsincorrect, setquestionsincorrect] = useState([]);
+
+  const defaultbutton = `p-2 bg-gray-100 hover:bg-gray-200 rounded-lg max-w-lg`;
+  const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
+  const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
+
+  useEffect(() => {
+    fetch("http://localhost:8080/quizzes")
+      .then((res) => res.json())
+      .then((data) => {
+        setinfo(data);
+        setshowinfo(true);
+        setshowloading(false);
+      });
+  }, []);
+
+  const checkanswer = (value, answer, question) => {
+    if (value === answer) {
+      console.log("correct");
+      setscore(score + 1);
+      setquestionscorrect([...questionscorrect, question]);
+    } else {
+      console.log("incorrect");
+      setquestionsincorrect([...questionsincorrect, question]);
+    }
+    setshowbutton(true);
+  };
+
+  useEffect(() => {
+    setshowbutton(false);
+    if (activeindex === 9) {
+      setshowreport(true);
+      setshowinfo(false);
+    }
+  }, [activeindex]);
+
+  console.log(questionscorrect);
+  console.log(questionsincorrect);
+
+  return (
+    <div className="App">
+      {showloading && <div>Loading...</div>}
+      {/* {showreport && <QuizReport score={score} correctquestions={questionscorrect} wrongquestions={questionsincorrect} />} */}
+      {showreport && (
+        <div>
+          <div>
+            <b>Your Score:</b>
+            {score}
+          </div>
+          <h2>Questions you got right:</h2>
+          {questionscorrect.map((data, i) => (
+            <div key={i}>{data}</div>
+          ))}
+          <h2>Questions you got wrong:</h2>
+          {questionsincorrect.map((data, i) => (
+            <div key={i}>{data}</div>
+          ))}
+        </div>
+      )}
+      {showinfo && (
+        <div>
+          <h1>{info.quizname}</h1>
+
+          <div>
+            {activeindex + 1} {info.questions[activeindex].question}
+          </div>
+          {info.questions[activeindex].distractors.map((distractor, i) => (
+            <div
+              class={defaultbutton}
+              key={i}
+              value={distractor}
+              onClick={() =>
+                checkanswer(
+                  distractor,
+                  info.questions[activeindex].correct_answer,
+                  info.questions[activeindex]
+                )
+              }
+            >
+              {distractor}
+            </div>
+          ))}
+          {showbutton && (
+            <button onClick={() => setactiveindex(activeindex + 1)}>
+              Next Question
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ShowNewerQuiz;

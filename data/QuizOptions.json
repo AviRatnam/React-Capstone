@@ -1,9 +1,58 @@
 {
-    "answers": [
+  "quizzes": {
+    "_id": { "$oid": "6166db2598fbd5b50fc784b7" },
+    "quizname": "Cells1",
+    "questions": [
       {
-        "question": "",
-        "optionSelected": "",
-        "id": 1
+        "question": "The  _______  in a living organism\n _______  Membrane\nmembrane separates  _______ s from one\nanother and also the  _______  from the\nComponents of the  _______ \n _______  wall is an\nmembrane in plant  _______ s.",
+        "distractors": ["cell", "animal", "severy"],
+        "correct_answer": "cell"
+      },
+      {
+        "question": "organism with billions of cells begins\n _______  are made up of a single cell.",
+        "distractors": ["organisms", "probiosis", "biosystem"],
+        "correct_answer": "organisms"
+      },
+      {
+        "question": "components of the cell, take an\nbetween the  _______  and the cell\ncalled cell wall.",
+        "distractors": ["nucleus", "mitochondrion", "mitosome"],
+        "correct_answer": "nucleus"
+      },
+      {
+        "question": "The cell in a living organism\nCell  _______ \n _______  separates cells from one\nanother and also the cell from the\nComponents of the cell\nCell wall is an\n _______  in plant cells.",
+        "distractors": ["membrane", "curling", "oak tag"],
+        "correct_answer": "membrane"
+      },
+      {
+        "question": "The cell in a living organism\nCell Membrane\nmembrane separates cells from one\nanother and also the cell from the\nComponents of the cell\nCell wall is an\nmembrane in  _______  cells.",
+        "distractors": ["plant", "page", "contrivances"],
+        "correct_answer": "plant"
+      },
+      {
+        "question": "surrounding the cell membrane is\nCells can\nobserve  _______  cells.",
+        "distractors": ["animal", "probiosis", "biosystem"],
+        "correct_answer": "animal"
+      },
+      {
+        "question": "cell membrane\ncell membrane\nCELL\nCELL MEMBRANE\nsmallest living  _______  of an organism is a ‘cell’.",
+        "distractors": ["part", "ball", "sister"],
+        "correct_answer": "part"
+      },
+      {
+        "question": "8.4 Cell  _______  and\nup of cells.",
+        "distractors": ["structure", "handicraft", "cognition"],
+        "correct_answer": "structure"
+      },
+      {
+        "question": "The cell in a living organism\nCell Membrane\nmembrane separates cells from one\nanother and also the cell from the\nComponents of the cell\nCell  _______  is an\nmembrane in plant cells.",
+        "distractors": ["wall", "wire", "finial"],
+        "correct_answer": "wall"
+      },
+      {
+        "question": "the cell membrane, the  _______ \nin animal cells.",
+        "distractors": ["cytoplasm", "plasmolysis", "protoplasmatic"],
+        "correct_answer": "cytoplasm"
       }
     ]
   }
+}

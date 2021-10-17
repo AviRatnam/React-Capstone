@@ -13,8 +13,9 @@ const CreateTest = () => {
 
   useEffect(() => {
     const abortCont = new AbortController();
+    const api_endpoint = 'https://rithik-capstone.herokuapp.com/getquizcards'
 
-    fetch("https://capstone.rithik.xyz/qjson/quizzes", { signal: abortCont.signal })
+    fetch(api_endpoint, { signal: abortCont.signal })
       .then((res) => {
         return res.json();
       })
