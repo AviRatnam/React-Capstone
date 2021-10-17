@@ -11,11 +11,12 @@ const ShowNewerQuiz = () => {
   const [showloading, setshowloading] = useState(true);
   const [showbutton, setshowbutton] = useState(false);
   const [showreport, setshowreport] = useState(false);
-
-  let questionscorrect = [];
-  let questionsincorrect = [];
+  const [questionscorrect, setquestionscorrect] = useState([]);
+  const [questionsincorrect, setquestionsincorrect] = useState([]);
 
   const defaultbutton = `p-2 bg-gray-100 hover:bg-gray-200 rounded-lg max-w-lg`;
+  const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
+  const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
 
   useEffect(() => {
     fetch("http://localhost:8080/quizzes")
@@ -27,12 +28,14 @@ const ShowNewerQuiz = () => {
       });
   }, []);
 
-  const checkanswer = (value, answer) => {
+  const checkanswer = (value, answer, question) => {
     if (value === answer) {
       console.log("correct");
       setscore(score + 1);
+      setquestionscorrect([...questionscorrect, question]);
     } else {
       console.log("incorrect");
+      setquestionsincorrect([...questionsincorrect, question]);
     }
     setshowbutton(true);
   };
@@ -45,10 +48,29 @@ const ShowNewerQuiz = () => {
     }
   }, [activeindex]);
 
+  console.log(questionscorrect);
+  console.log(questionsincorrect);
+
   return (
     <div className="App">
       {showloading && <div>Loading...</div>}
-      {showreport && <QuizReport score={score} />}
+      {/* {showreport && <QuizReport score={score} correctquestions={questionscorrect} wrongquestions={questionsincorrect} />} */}
+      {showreport && (
+        <div>
+          <div>
+            <b>Your Score:</b>
+            {score}
+          </div>
+          <h2>Questions you got right:</h2>
+          {questionscorrect.map((data, i) => (
+            <div key={i}>{data}</div>
+          ))}
+          <h2>Questions you got wrong:</h2>
+          {questionsincorrect.map((data, i) => (
+            <div key={i}>{data}</div>
+          ))}
+        </div>
+      )}
       {showinfo && (
         <div>
           <h1>{info.quizname}</h1>
@@ -64,7 +86,8 @@ const ShowNewerQuiz = () => {
               onClick={() =>
                 checkanswer(
                   distractor,
-                  info.questions[activeindex].correct_answer
+                  info.questions[activeindex].correct_answer,
+                  info.questions[activeindex]
                 )
               }
             >
