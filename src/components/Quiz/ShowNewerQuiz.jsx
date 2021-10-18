@@ -48,8 +48,8 @@ const ShowNewerQuiz = () => {
     }
   }, [activeindex]);
 
-  console.log(questionscorrect);
-  console.log(questionsincorrect);
+  console.log("Correct Questions: ",questionscorrect);
+  console.log("Incorrect Questions: ",questionsincorrect);
 
   return (
     <div className="App">
@@ -57,17 +57,17 @@ const ShowNewerQuiz = () => {
       {/* {showreport && <QuizReport score={score} correctquestions={questionscorrect} wrongquestions={questionsincorrect} />} */}
       {showreport && (
         <div>
-          <div>
+          <h2>
             <b>Your Score:</b>
             {score}
-          </div>
+          </h2>
           <h2>Questions you got right:</h2>
           {questionscorrect.map((data, i) => (
-            <div key={i}>{data}</div>
+            <div key={i}>{data.question}</div>
           ))}
           <h2>Questions you got wrong:</h2>
           {questionsincorrect.map((data, i) => (
-            <div key={i}>{data}</div>
+            <div key={i}>{data.question}</div>
           ))}
         </div>
       )}
