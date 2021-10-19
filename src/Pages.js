@@ -3,6 +3,7 @@ import QuizNew from "./components/Quiz/QuizNew";
 import ShowQuiz from "./components/Quiz/ShowQuiz";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateTest from "./components/CreateTest/CreateTest";
+import ShowNewerQuiz from "./components/Quiz/ShowNewerQuiz";
 
 const Pages = () =>{
     return(
@@ -14,8 +15,8 @@ const Pages = () =>{
             <Route path="/newquiz">
               <CreateTest />
             </Route>
-            <Route path="/takequiz">
-              <QuizNew />
+            <Route path="/takequiz/:quizname">
+              <ShowNewerQuiz />
             </Route>
           </Switch>
         </div>

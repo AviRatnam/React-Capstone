@@ -1,0 +1,175 @@
+{
+  "quizzes": {
+    "_id": { "$oid": "616ac07f87a221a8a4935bc8" },
+    "quizname": "Light1",
+    "questions": [
+      {
+        "question": "Describe an activity to show that the incident ray, the reflected ray and\n(d) Night birds have  ____________ cones than rods in their  _______ .",
+        "distractors": [
+          { "distractor": "eyes", "meaning": "look at" },
+          {
+            "distractor": "timeserver",
+            "meaning": "one who conforms to current ways and opinions for personal advantage"
+          },
+          { "distractor": "sing from same hymnbook", "meaning": null },
+          { "distractor": "agreeance", "meaning": null }
+        ],
+        "correct_answer": "eyes"
+      },
+      {
+        "question": "The light ray, which strikes any surface,\nlight which is made up of several\nthe plane  _______ , the incident ray and\nthe reflected ray on the paper with the\n _______  at the point where the incident\nray strikes the  _______ .",
+        "distractors": [
+          { "distractor": "mirror", "meaning": "reflect as if in a mirror" },
+          {
+            "distractor": "reflector",
+            "meaning": "optical telescope consisting of a large concave mirror that produces an image that is magnified by the eyepiece"
+          },
+          { "distractor": "way of cross", "meaning": null },
+          { "distractor": "beauty dish", "meaning": null }
+        ],
+        "correct_answer": "mirror"
+      },
+      {
+        "question": "The light  _______ , which strikes any surface,\nlight which is made up of several\nthe plane mirror, the incident  _______  and\nthe reflected  _______  on the paper with the\nmirror at the point where the incident\n _______  strikes the mirror.",
+        "distractors": [
+          { "distractor": "ray", "meaning": "emit as rays" },
+          {
+            "distractor": "back",
+            "meaning": "shift to a counterclockwise direction"
+          },
+          { "distractor": "spinate", "meaning": null },
+          { "distractor": "t spine", "meaning": null }
+        ],
+        "correct_answer": "ray"
+      },
+      {
+        "question": "Ü Regular  _______  takes place when light is\n(ii) Incident ray, reflected ray and the normal\nÜ Image formed in a plane mirror undergoes\nÜ Parts of the eye are cornea, iris, pupil, lens,\n5.",
+        "distractors": [
+          {
+            "distractor": "reflection",
+            "meaning": "the ability to reflect beams or rays"
+          },
+          { "distractor": "heat", "meaning": "gain heat or get hot" },
+          {
+            "distractor": "time",
+            "meaning": "assign a time for an activity or event"
+          },
+          { "distractor": "physical quantity", "meaning": null }
+        ],
+        "correct_answer": "reflection"
+      },
+      {
+        "question": "What is the  _______  of incidence of a ray if the reflected ray is at an  _______  of\nA ray of light is incident on one at an\nDraw the reflected ray from the second\nmirror.",
+        "distractors": [
+          { "distractor": "angle", "meaning": "move or proceed at an angle" },
+          { "distractor": "white man", "meaning": null },
+          { "distractor": "dorhawk", "meaning": null },
+          { "distractor": "felwort", "meaning": null }
+        ],
+        "correct_answer": "angle"
+      },
+      {
+        "question": "The light ray, which strikes any surface,\nlight which is made up of several\nthe plane mirror, the  _______  ray and\nthe reflected ray on the paper with the\nmirror at the point where the  _______ \nray strikes the mirror.",
+        "distractors": [
+          {
+            "distractor": "incident",
+            "meaning": "falling or striking of light rays on something"
+          },
+          {
+            "distractor": "event",
+            "meaning": "a phenomenon located at a single point in space-time; the fundamental observational entity in relativity theory"
+          },
+          {
+            "distractor": "cyclic",
+            "meaning": "forming a whorl or having parts arranged in a whorl"
+          },
+          { "distractor": "accidental", "meaning": null }
+        ],
+        "correct_answer": "incident"
+      },
+      {
+        "question": "Ü Regular reflection takes place when light is\n(ii) Incident ray, reflected ray and the normal\nÜ  _______  formed in a plane mirror undergoes\nÜ Parts of the eye are cornea, iris, pupil, lens,\n5.",
+        "distractors": [
+          {
+            "distractor": "image",
+            "meaning": "imagine; conceive of; see in one's mind"
+          },
+          {
+            "distractor": "representation",
+            "meaning": "an activity that stands as an equivalent of something or results in an equivalent"
+          },
+          { "distractor": "representationalism", "meaning": null },
+          {
+            "distractor": "depiction",
+            "meaning": "a drawing of the outlines of forms or objects"
+          }
+        ],
+        "correct_answer": "image"
+      },
+      {
+        "question": "Describe an  _______  to show that the incident ray, the reflected ray and\n(d) Night birds have  ____________ cones than rods in their eyes.",
+        "distractors": [
+          {
+            "distractor": "activity",
+            "meaning": "a process existing in or produced by nature (rather than by the intent of human beings"
+          },
+          {
+            "distractor": "trick",
+            "meaning": "an attempt to get you to do something foolish or imprudent"
+          },
+          { "distractor": "have someone's number", "meaning": null },
+          {
+            "distractor": "scene",
+            "meaning": "a situation treated as an observable object"
+          }
+        ],
+        "correct_answer": "activity"
+      },
+      {
+        "question": "allow more light in the eye, when\nBehind the pupil of the eye is a lens\n _______  has green eyes, we refer actually\neye.",
+        "distractors": [
+          {
+            "distractor": "person",
+            "meaning": "a human body (usually including the clothing"
+          },
+          { "distractor": "biometeorology", "meaning": null },
+          { "distractor": "bioluminescence", "meaning": null },
+          { "distractor": "probiosis", "meaning": null }
+        ],
+        "correct_answer": "person"
+      },
+      {
+        "question": "The light ray, which strikes any surface,\nlight which is made up of several\nthe plane mirror, the incident ray and\nthe reflected ray on the  _______  with the\nmirror at the point where the incident\nray strikes the mirror.",
+        "distractors": [
+          { "distractor": "paper", "meaning": "cover with paper" },
+          {
+            "distractor": "wood",
+            "meaning": "a golf club with a long shaft used to hit long shots; originally made with a wooden head"
+          },
+          {
+            "distractor": "column",
+            "meaning": "a line of units following one after another"
+          },
+          {
+            "distractor": "wax",
+            "meaning": "any of various substances of either mineral origin or plant or animal origin; they are solid at normal temperatures and insoluble in water"
+          }
+        ],
+        "correct_answer": "paper"
+      },
+      {
+        "question": "The light ray, which strikes any  _______ ,\nlight which is made up of several\nthe plane mirror, the incident ray and\nthe reflected ray on the paper with the\nmirror at the point where the incident\nray strikes the mirror.",
+        "distractors": [
+          { "distractor": "surface", "meaning": "on the surface" },
+          { "distractor": "interleaf", "meaning": null },
+          { "distractor": "bifront", "meaning": null },
+          {
+            "distractor": "chicken",
+            "meaning": "a foolhardy competition; a dangerous activity that is continued until one competitor becomes afraid and stops"
+          }
+        ],
+        "correct_answer": "surface"
+      }
+    ]
+  }
+}

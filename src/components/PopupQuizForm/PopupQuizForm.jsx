@@ -4,29 +4,25 @@ import Header from "../Header/Header";
 const PopupQuizForm = () => {
   const quizformstyle = `rounded-lg shadow-lg text-gray-700 px-10 py-10 flex-initial flex items-center object-right-top transition `;
   const borderstyle = `border-2 border-gray-200 rounded-md`;
-  const apipath = "https://capstone.rithik.xyz/api/gettext?src=";
+  const apipath = "https://capstone.rithik.xyz/api/getquiz?quizname=";
 
   const [quizName, setQuizName] = useState("");
-  const [subjectName, setSubjectName] = useState("");
-  const [topic, setTopic] = useState("");
+  const [chapter, setchapter] = useState("");
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(1);
-  const [questions, setQuestions] = useState(1);
   const [pdf, setpdf] = useState("");
 
   const submitQuiz = (e) => {
     e.preventDefault();
     const quizDetails = {
       quizName,
-      subjectName,
-      topic,
+      chapter,
       minutes,
       seconds,
-      questions,
       pdf,
     };
 
-    fetch("https://capstone.rithik.xyz/qjson/quizzes", {
+    fetch("https://capstone.rithik.xyz/api/getquizcards", {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
       body: JSON.stringify(quizDetails),
@@ -62,31 +58,13 @@ const PopupQuizForm = () => {
           value={quizName}
           onChange={(e) => setQuizName(e.target.value)}
         />
-        <h3>Subject</h3>
+        <h3>chapter</h3>
         <input
           class={borderstyle}
           type="text"
           required
-          value={subjectName}
-          onChange={(e) => setSubjectName(e.target.value)}
-        />
-        <h3>Topic</h3>
-        <input
-          class={borderstyle}
-          type="text"
-          required
-          value={topic}
-          onChange={(e) => setTopic(e.target.value)}
-        />
-        <h3>Number of Questions</h3>
-        <input
-          class={borderstyle}
-          type="number"
-          min="1"
-          max="10"
-          defaultValue={questions}
-          onChange={(e) => setQuestions(e.target.value)}
-          required
+          value={chapter}
+          onChange={(e) => setchapter(e.target.value)}
         />
         <h3>Time Limit</h3>
         <input
