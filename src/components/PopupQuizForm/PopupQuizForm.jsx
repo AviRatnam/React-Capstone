@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Header from "../Header/Header";
 
 const PopupQuizForm = () => {
   const quizformstyle = `rounded-lg shadow-lg text-gray-700 px-10 py-10 flex-initial flex items-center object-right-top transition `;
   const borderstyle = `border-2 border-gray-200 rounded-md`;
+
+  const history = useHistory();
 
   const [quizName, setQuizName] = useState("");
   const [chapter, setchapter] = useState("");
@@ -36,7 +39,9 @@ const PopupQuizForm = () => {
       //headers: { "Content-Type": "application/JSON" },
       body: data
     }).then(() => {
-      console.log("new quiz added");
+      alert("Quiz added!");
+      window.location.reload(); 
+      //history.push("/newquiz");
     });
 
     // fetch(apipath + pdf, {

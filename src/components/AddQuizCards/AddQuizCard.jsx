@@ -11,13 +11,14 @@ const AddQuizCard = ({ quizdata }) => {
 
 
   const deleteQuiz = (id) => {
-    const data = new FormData();
-    data.append("quizname",id);
+    const deletedata = new FormData();
+    deletedata.append("quizname",id);
     fetch(API, {
       method: "POST",
-      body: data
+      body: deletedata
     }).then(() => {
-      history.push("/");
+      //history.push("/newquiz");
+      window.location.reload(); 
     });
   };
 

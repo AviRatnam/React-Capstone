@@ -12,14 +12,19 @@ const ShowNewerQuiz = () => {
   const [showloading, setshowloading] = useState(true);
   const [showbutton, setshowbutton] = useState(false);
   const [showreport, setshowreport] = useState(false);
+
   const [questionscorrect, setquestionscorrect] = useState([]);
+  const [optionscorrect, setoptionscorrect] = useState([]);
+
   const [questionsincorrect, setquestionsincorrect] = useState([]);
+  const [optionsincorrect, setoptionsincorrect] = useState([]);
+
 
   const defaultbutton = `p-2 bg-gray-100 hover:bg-gray-200 rounded-lg max-w-lg`;
   const explanationbutton = `p-2 hover:bg-gray-100 rounded-lg max-w-lg`;
 
-  const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
-  const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
+  // const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
+  // const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
 
   const { quizname } = useParams();
 
@@ -34,13 +39,15 @@ const ShowNewerQuiz = () => {
   }, []);
 
   const checkanswer = (value, answer, question) => {
-    if (value === answer) {
+    if (value.distractor === answer) {
       console.log("correct");
       setscore(score + 1);
       setquestionscorrect([...questionscorrect, question]);
+      setoptionscorrect([...optionscorrect,answer])
     } else {
       console.log("incorrect");
       setquestionsincorrect([...questionsincorrect, question]);
+      setoptionsincorrect([...optionsincorrect,answer])
     }
     setshowbutton(true);
   };
@@ -55,6 +62,9 @@ const ShowNewerQuiz = () => {
 
   console.log("Correct Questions: ",questionscorrect);
   console.log("Incorrect Questions: ",questionsincorrect);
+  console.log("Correct options: ",optionscorrect);
+  console.log("Incorrect options: ",optionsincorrect);
+
 
   return (
     <div className="App">
@@ -70,9 +80,18 @@ const ShowNewerQuiz = () => {
           {questionscorrect.map((data, i) => (
             <div key={i} class={defaultbutton}>{data.question}</div>
           ))}
+          <h2>List of answers</h2>
+          {optionscorrect.map((data, i) => (
+            <div key={i} class={defaultbutton}>{data}</div>
+          ))}
+
           <h2>Questions you got wrong:</h2>
           {questionsincorrect.map((data, i) => (
             <div key={i} class={defaultbutton}>{data.question}</div>
+          ))}
+          <h2>List of answers</h2>
+          {optionsincorrect.map((data, i) => (
+            <div key={i} class={defaultbutton}>{data}</div>
           ))}
         </div>
       )}
