@@ -7,11 +7,15 @@ const AddQuizCard = ({ quizdata }) => {
   console.log(quizdata.length);
   const newquizstyles = `rounded-lg shadow-md text-gray-700 px-5 py-5 flex-initial hover:shadow-lg hover:pointer transition duration-500 ease-in-out`;
   const history = useHistory();
-  const API = "https://capstone.rithik.xyz/api/getquiz?quizname=";
+  const API = "https://capstone.rithik.xyz/api/deletequiz";
+
 
   const deleteQuiz = (id) => {
-    fetch(API + id, {
-      method: "DELETE",
+    const data = new FormData();
+    data.append("quizname",id);
+    fetch(API, {
+      method: "POST",
+      body: data
     }).then(() => {
       history.push("/");
     });

@@ -31,7 +31,7 @@ const PopupQuizForm = () => {
 
     //data.append('file', this.uploadInput.files[0]);
 
-    fetch("https://capstone.rithik.xyz/api/upload", {
+    fetch("https://capstone.rithik.xyz/api/makequiz", {
       method: "POST",
       //headers: { "Content-Type": "application/JSON" },
       body: data
