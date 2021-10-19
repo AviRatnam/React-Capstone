@@ -7,12 +7,12 @@ const AddQuizCard = ({ quizdata }) => {
   console.log(quizdata.length);
   const newquizstyles = `rounded-lg shadow-md text-gray-700 px-5 py-5 flex-initial hover:shadow-lg hover:pointer transition duration-500 ease-in-out`;
   const history = useHistory();
+  const API = "https://capstone.rithik.xyz/api/getquiz?quizname=";
 
   const deleteQuiz = (id) => {
-    fetch("https://capstone.rithik.xyz/qjson/quizzes/" + id, {
+    fetch(API + id, {
       method: "DELETE",
     }).then(() => {
-      console.log("https://capstone.rithik.xyz/qjson/quizzes/" + id);
       history.push("/");
     });
   };
@@ -21,27 +21,19 @@ const AddQuizCard = ({ quizdata }) => {
     <div class="grid md:grid-columns-3 py-5">
       <Header>Available Quizzes</Header>
       <div class="md:grid grid-cols-3 gap-10 py-5 px-10">
-        {quizdata.map((quiz) => (
+        {quizdata.quizcards.map((quiz) => (
           <div class={newquizstyles} key={quiz.id}>
-            <Link to="/takequiz">
-              <Title>{quiz.quizName}</Title>
-              <Header>{quiz.subjectName}</Header>
+            <Link to={`/takequiz/${quiz.quizname}`}>
+              <Title>{quiz.chapter}</Title>
+              <Header>{quiz.quizname}</Header>
               <ul>
                 <li>
-                  <span class="font-bold">Topic: </span>
-                  {quiz.topic}
-                </li>
-                <li>
-                  <span class="font-bold">Time allocated:</span> {quiz.minutes}{" "}
-                  minutes {quiz.seconds} seconds
-                </li>
-                <li>
-                  <span class="font-bold">No. of Questions: </span>
-                  {quiz.questions}
+                  <span class="font-bold">Time allocated:</span> {quiz.time.minutes}{" "}
+                  minutes {quiz.time.seconds} seconds
                 </li>
               </ul>
             </Link>
-            <div onClick={() => deleteQuiz(quiz.id)}>
+            <div onClick={() => deleteQuiz(quiz.quizname)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6"

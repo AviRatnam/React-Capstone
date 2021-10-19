@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <ShowNewerQuiz />
+        <Pages />
       </div>
     </Router>
   );

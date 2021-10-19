@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import QuizReport from "./QuizReport";
+import { useParams } from "react-router";
+import Timer from "../Timer/Timer";
 
 const ShowNewerQuiz = () => {
   const [info, setinfo] = useState(null);
@@ -15,11 +16,15 @@ const ShowNewerQuiz = () => {
   const [questionsincorrect, setquestionsincorrect] = useState([]);
 
   const defaultbutton = `p-2 bg-gray-100 hover:bg-gray-200 rounded-lg max-w-lg`;
+  const explanationbutton = `p-2 hover:bg-gray-100 rounded-lg max-w-lg`;
+
   const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
   const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
 
+  const { quizname } = useParams();
+
   useEffect(() => {
-    fetch("http://localhost:8080/quizzes")
+    fetch("https://capstone.rithik.xyz/api/getquiz?quizname="+quizname)
       .then((res) => res.json())
       .then((data) => {
         setinfo(data);
@@ -63,18 +68,18 @@ const ShowNewerQuiz = () => {
           </h2>
           <h2>Questions you got right:</h2>
           {questionscorrect.map((data, i) => (
-            <div key={i}>{data.question}</div>
+            <div key={i} class={defaultbutton}>{data.question}</div>
           ))}
           <h2>Questions you got wrong:</h2>
           {questionsincorrect.map((data, i) => (
-            <div key={i}>{data.question}</div>
+            <div key={i} class={defaultbutton}>{data.question}</div>
           ))}
         </div>
       )}
       {showinfo && (
         <div>
           <h1>{info.quizname}</h1>
-
+          <Timer initialMinute={info.quizcards.time.minutes} initialSeconds={info.quizcards.time.minutes} />
           <div>
             {activeindex + 1} {info.questions[activeindex].question}
           </div>
@@ -91,7 +96,8 @@ const ShowNewerQuiz = () => {
                 )
               }
             >
-              {distractor}
+              {distractor.distractor}
+              {showbutton && <div class={explanationbutton}>Meaning: {distractor.meaning}</div>}
             </div>
           ))}
           {showbutton && (
