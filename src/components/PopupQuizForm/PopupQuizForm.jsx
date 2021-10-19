@@ -4,7 +4,6 @@ import Header from "../Header/Header";
 const PopupQuizForm = () => {
   const quizformstyle = `rounded-lg shadow-lg text-gray-700 px-10 py-10 flex-initial flex items-center object-right-top transition `;
   const borderstyle = `border-2 border-gray-200 rounded-md`;
-  const apipath = "https://capstone.rithik.xyz/api/getquiz?quizname=";
 
   const [quizName, setQuizName] = useState("");
   const [chapter, setchapter] = useState("");
@@ -22,21 +21,25 @@ const PopupQuizForm = () => {
       pdf,
     };
 
-    fetch("https://capstone.rithik.xyz/api/getquizcards", {
+    const data = new FormData();
+    data.append("quizDetails", quizDetails);
+    data.append('file', this.uploadInput.files[0]);
+
+    fetch("https://capstone.rithik.xyz/api/upload", {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
-      body: JSON.stringify(quizDetails),
+      body: quizDetails
     }).then(() => {
       console.log("new quiz added");
     });
 
-    fetch(apipath + pdf, {
-      method: "POST",
-    })
-      .then(console.log(apipath + pdf))
-      .catch((e) => {
-        console.error(e);
-      });
+    // fetch(apipath + pdf, {
+    //   method: "POST",
+    // })
+    //   .then(console.log(apipath + pdf))
+    //   .catch((e) => {
+    //     console.error(e);
+    //   });
   };
 
   const getpdfname = (path) => {
@@ -86,7 +89,13 @@ const PopupQuizForm = () => {
         />
         <span>Seconds</span>
         <span>Enter pdf</span>
-        <input type="file" onChange={(e) => getpdfname(e.target.value)} />
+        <input
+          type="file"
+          onChange={(e) => setpdf(e.target.value)}
+          // ref={(ref) => {
+          //   setpdf(ref);
+          // }}
+        />
         <button>Create Quiz</button>
       </form>
     </div>

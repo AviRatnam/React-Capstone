@@ -79,7 +79,7 @@ const ShowNewerQuiz = () => {
       {showinfo && (
         <div>
           <h1>{info.quizname}</h1>
-          <Timer initialMinute={info.quizcards.time.minutes} initialSeconds={info.quizcards.time.minutes} />
+          {/* <Timer initialMinute={info.quizcards[activeindex].time.minutes} initialSeconds={info.quizcards[activeindex].time.seconds} /> */}
           <div>
             {activeindex + 1} {info.questions[activeindex].question}
           </div>
