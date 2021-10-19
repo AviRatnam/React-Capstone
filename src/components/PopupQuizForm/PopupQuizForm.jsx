@@ -20,15 +20,21 @@ const PopupQuizForm = () => {
       seconds,
       pdf,
     };
+    console.log(quizDetails);
 
     const data = new FormData();
-    data.append("quizDetails", quizDetails);
-    data.append('file', this.uploadInput.files[0]);
+    data.append("quizname", quizName);
+    data.append("chapter", chapter);
+    data.append("minutes", minutes);
+    data.append("seconds", seconds);
+    data.append("file", pdf.files[0]);
+
+    //data.append('file', this.uploadInput.files[0]);
 
     fetch("https://capstone.rithik.xyz/api/upload", {
       method: "POST",
-      headers: { "Content-Type": "application/JSON" },
-      body: quizDetails
+      //headers: { "Content-Type": "application/JSON" },
+      body: data
     }).then(() => {
       console.log("new quiz added");
     });
@@ -91,10 +97,10 @@ const PopupQuizForm = () => {
         <span>Enter pdf</span>
         <input
           type="file"
-          onChange={(e) => setpdf(e.target.value)}
-          // ref={(ref) => {
-          //   setpdf(ref);
-          // }}
+          //onChange={(e) => setpdf(e.target.value)}
+          ref={(ref) => {
+            setpdf(ref);
+          }}
         />
         <button>Create Quiz</button>
       </form>
