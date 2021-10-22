@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import Timer from "../Timer/Timer";
+import { TailSpin } from "react-loading-icons";
+import Title from "../Title/Title";
+import Header from "../Header/Header";
+import { Link } from "react-router-dom";
 
 const ShowNewerQuiz = () => {
+  const cardstyles =
+    "flex flex-col justify-center gap-3 cursor-pointer items-center rounded-lg shadow-lg max-w-3xl p-5 ";
+
   const [info, setinfo] = useState(null);
   const [showinfo, setshowinfo] = useState(false);
 
@@ -19,17 +26,19 @@ const ShowNewerQuiz = () => {
   const [questionsincorrect, setquestionsincorrect] = useState([]);
   //const [optionsincorrect, setoptionsincorrect] = useState([]);
 
-
   const defaultbutton = `p-2 bg-gray-100 hover:bg-gray-200 rounded-lg max-w-lg`;
   const explanationbutton = `p-2 hover:bg-gray-100 rounded-lg max-w-lg`;
 
   // const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
   // const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
 
+  //const api = "https://capstone.rithik.xyz/api/getquiz?quizname=;"
+  const quiz_api =
+    "https://rithik-capstone.herokuapp.com/api/getquiz?quizname=";
   const { quizname } = useParams();
 
   useEffect(() => {
-    fetch("https://capstone.rithik.xyz/api/getquiz?quizname="+quizname)
+    fetch(quiz_api + quizname)
       .then((res) => res.json())
       .then((data) => {
         setinfo(data);
@@ -60,70 +69,98 @@ const ShowNewerQuiz = () => {
     }
   }, [activeindex]);
 
-  console.log("Correct Questions: ",questionscorrect);
-  console.log("Incorrect Questions: ",questionsincorrect);
+  useEffect(() => {
+    console.log("Send report");
+  }, [showreport]);
+
+  console.log("Correct Questions: ", questionscorrect);
+  console.log("Incorrect Questions: ", questionsincorrect);
   // console.log("Correct options: ",optionscorrect);
   // console.log("Incorrect options: ",optionsincorrect);
 
+  //info.quizcards[activeindex].time.minutes
 
   return (
-    <div className="App">
-      {showloading && <div>Loading...</div>}
-      {/* {showreport && <QuizReport score={score} correctquestions={questionscorrect} wrongquestions={questionsincorrect} />} */}
+    <div>
+      {showloading && <h2>Loading...</h2>}
       {showreport && (
         <div>
-          <h2>
-            <b>Your Score:</b>
-            {score}
-          </h2>
-          <h2>Questions you got right:</h2>
+          <div class="p-5">
+            <Title>Your Score: {score}</Title>
+          </div>
+          <Header>Questions you got right:</Header>
           {questionscorrect.map((data, i) => (
-            <div key={i} class={defaultbutton}>{data.question}</div>
+            <div key={i} class="m-5 text-left">
+              {data.question}
+            </div>
           ))}
           {/* <h2>List of answers</h2>
           {optionscorrect.map((data, i) => (
             <div key={i} class={defaultbutton}>{data}</div>
           ))} */}
 
-          <h2>Questions you got wrong:</h2>
+          <Header>Questions you got wrong:</Header>
           {questionsincorrect.map((data, i) => (
-            <div key={i} class={defaultbutton}>{data.question}</div>
+            <div key={i} class="m-5 text-left">
+              {data.question}
+            </div>
           ))}
           {/* <h2>List of answers</h2>
           {optionsincorrect.map((data, i) => (
             <div key={i} class={defaultbutton}>{data}</div>
           ))} */}
+          <Link to={`/newquiz`}>
+            <div class="rounded-lg shadow-sm hover:shadow-md p-5 max-w-xs align-middle bg-gray-100 ">
+              Exit Quiz
+            </div>
+          </Link>
         </div>
       )}
       {showinfo && (
         <div>
-          <h1>{info.quizname}</h1>
-          {/* <Timer initialMinute={info.quizcards[activeindex].time.minutes} initialSeconds={info.quizcards[activeindex].time.seconds} /> */}
-          <div>
-            {activeindex + 1} {info.questions[activeindex].question}
-          </div>
-          {info.questions[activeindex].distractors.map((distractor, i) => (
-            <div
-              class={defaultbutton}
-              key={i}
-              value={distractor}
-              onClick={() =>
-                checkanswer(
-                  distractor,
-                  info.questions[activeindex].correct_answer,
-                  info.questions[activeindex]
-                )
-              }
-            >
-              {distractor.distractor}
-              {showbutton && <div class={explanationbutton}>Meaning: {distractor.meaning}</div>}
+          <div class="w-screen h-screen flex justify-center overflow-hidden items-center">
+            <div class=" absolute top-5 flex items-center justify-between gap-96">
+              <Title>{info.quizname}</Title>
+              <Timer initialMinute="5" initialSeconds="5" />
             </div>
-          ))}
-          {showbutton && (
-            <button onClick={() => setactiveindex(activeindex + 1)}>
-              Next Question
-            </button>
-          )}
+            <div class={cardstyles}>
+              <span>
+                <b>Question {activeindex + 1}: </b>
+                {info.questions[activeindex].question}
+              </span>
+
+              {info.questions[activeindex].distractors.map((distractor, i) => (
+                <div
+                  class={defaultbutton}
+                  key={i}
+                  value={distractor}
+                  onClick={() =>
+                    checkanswer(
+                      distractor,
+                      info.questions[activeindex].correct_answer,
+                      info.questions[activeindex]
+                    )
+                  }
+                >
+                  {distractor.distractor}
+                  {showbutton && (
+                    <div class={explanationbutton}>
+                      <b>Meaning: </b>
+                      {distractor.meaning}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            {showbutton && (
+              <button
+                class="justify-end mx-5 border-b-2 border-black"
+                onClick={() => setactiveindex(activeindex + 1)}
+              >
+                Next Question
+              </button>
+            )}
+          </div>
         </div>
       )}
     </div>
