@@ -5,47 +5,24 @@ import Header from "../Header/Header";
 //import Hamburger from "./Hamburger";
 import Timer from "../Timer/Timer";
 import CallSideMenu from "../CallSideMenu/CallSideMenu";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 //import { AnimatePresence, Motion } from "framer-motion";
 
 const Dashboard = () => {
-  const subjects = [
-    {
-      title: "Addition",
-      subtitle: "Mathematics",
-      length: "25 minutes",
-      target: "#",
-    },
-    {
-      title: "Subtraction",
-      subtitle: "Mathematics",
-      length: "15 minutes",
-      target: "#",
-    },
-    {
-      title: "Metals",
-      subtitle: "Science",
-      length: "20 minutes",
-      target: "#",
-    },
-    {
-      title: "Grammar Basics",
-      subtitle: "English",
-      length: "15 minutes",
-      target: "#",
-    },
-    {
-      title: "Lifecycle",
-      subtitle: "Science",
-      length: "35 minutes",
-      target: "#",
-    },
-    {
-      title: "Literature",
-      subtitle: "English",
-      length: "15 minutes",
-      target: "#",
-    },
-  ];
+  const [subjects, setsubjects] = useState(null);
+  const [showsubjects, setshowsubjects] = useState(false);
+  const api_endpoint = "https://rithik-capstone.herokuapp.com/api/getquizcards";
+
+  useEffect(() => {
+    fetch(api_endpoint)
+      .then((data) => data.json())
+      .then((res) => {
+        setsubjects(res);
+        setshowsubjects(true);
+        console.log(res);
+      });
+  }, []);
 
   return (
     <div class=" grid md:grid-cols-5 ">
@@ -55,48 +32,13 @@ const Dashboard = () => {
           <Title>Begin Learning</Title>
           <Header>New Lessons</Header>
         </div>
-        <div class="px-10 py-10 md:grid grid-cols-3 gap-10">
-          <Card
-            title={subjects[0].title}
-            subtitle={subjects[0].subtitle}
-            length={subjects[0].length}
-            target={subjects[0].target}
-          ></Card>
-          <Card
-            title={subjects[1].title}
-            subtitle={subjects[1].subtitle}
-            length={subjects[1].length}
-            target={subjects[1].target}
-          ></Card>
-          <Card
-            title={subjects[2].title}
-            subtitle={subjects[2].subtitle}
-            length={subjects[2].length}
-            target={subjects[2].target}
-          ></Card>
-        </div>
-        <div class="px-10 py-10 md:grid grid-cols-3 gap-10">
-          <Card
-            title={subjects[3].title}
-            subtitle={subjects[3].subtitle}
-            length={subjects[3].length}
-            target={subjects[3].target}
-          ></Card>
-          <Card
-            title={subjects[4].title}
-            subtitle={subjects[4].subtitle}
-            length={subjects[4].length}
-            target={subjects[4].target}
-          ></Card>
-          <Card
-            title={subjects[5].title}
-            subtitle={subjects[5].subtitle}
-            length={subjects[5].length}
-            target={subjects[5].target}
-          ></Card>
-        </div>
-        <div class="text-left px-5 py-3">
-          <Header>Get Tested</Header>
+        <div class="md:grid	grid-cols-3 gap-3">
+          {showsubjects &&
+            subjects.quizcards.map((info) => (
+              <Link to={`/readlesson/${info.quizname}`}>
+                <Card title={info.chapter} content={info.summarized_text} />
+              </Link>
+            ))}
         </div>
       </div>
     </div>

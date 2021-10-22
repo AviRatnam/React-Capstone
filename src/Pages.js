@@ -4,6 +4,7 @@ import ShowQuiz from "./components/Quiz/ShowQuiz";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateTest from "./components/CreateTest/CreateTest";
 import ShowNewerQuiz from "./components/Quiz/ShowNewerQuiz";
+import Lesson from "./components/Lesson/Lesson";
 
 const Pages = () =>{
     return(
@@ -17,6 +18,9 @@ const Pages = () =>{
             </Route>
             <Route path="/takequiz/:quizname">
               <ShowNewerQuiz />
+            </Route>
+            <Route path="/readlesson/:lessonname">
+              <Lesson />
             </Route>
           </Switch>
         </div>
