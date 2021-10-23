@@ -10,3 +10,5 @@ Assuming you have NodeJS and npm installed:
 - `npm run start` runs the application.
 - `npm install tailwindcss` installs the styling components.
 
+Alternatively, you can check out the final product here:
+https://vercel.com/aviratnam/react-capstone
