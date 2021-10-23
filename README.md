@@ -10,5 +10,3 @@ Assuming you have NodeJS and npm installed:
 - `npm run start` runs the application.
 - `npm install tailwindcss` installs the styling components.
 
-If not hosted yet; in a separate terminal while the application is running:
-`npx json-server --watch data/quiz.json --port 8000` will access the Quiz related data.
