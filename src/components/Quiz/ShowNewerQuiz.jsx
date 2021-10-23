@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import Timer from "../Timer/Timer";
-import { TailSpin } from "react-loading-icons";
 import Title from "../Title/Title";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
@@ -32,7 +31,6 @@ const ShowNewerQuiz = () => {
   // const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
   // const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
 
-  //const api = "https://capstone.rithik.xyz/api/getquiz?quizname=;"
   const quiz_api =
     "https://rithik-capstone.herokuapp.com/api/getquiz?quizname=";
   const { quizname } = useParams();
@@ -69,16 +67,34 @@ const ShowNewerQuiz = () => {
     }
   }, [activeindex]);
 
+  //json data
+
   useEffect(() => {
-    console.log("Send report");
+    // const data = {
+    //   quizname,
+    //   score,
+    //   questionscorrect,
+    //   questionsincorrect,
+    // };
+
+    const data = {
+      name: "avi",
+      quizzes: [
+        {"quizname":quizname, 
+        "correct questions":questionscorrect, 
+        "wrong questions":questionsincorrect, 
+        "score":score}
+      ],
+    };
+
+    fetch("https://rithik-capstone.herokuapp.com/api/addreport?name=" + "avi", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).then(() => {
+      console.log("Report added");
+    });
   }, [showreport]);
-
-  console.log("Correct Questions: ", questionscorrect);
-  console.log("Incorrect Questions: ", questionsincorrect);
-  // console.log("Correct options: ",optionscorrect);
-  // console.log("Incorrect options: ",optionsincorrect);
-
-  //info.quizcards[activeindex].time.minutes
 
   return (
     <div>
@@ -110,7 +126,9 @@ const ShowNewerQuiz = () => {
             <div key={i} class={defaultbutton}>{data}</div>
           ))} */}
           <Link to={`/newquiz`}>
-            <div class="rounded-lg shadow-sm hover:shadow-md p-5 max-w-xs align-middle bg-gray-100 ">
+            <div
+              class="rounded-lg shadow-sm hover:shadow-md p-5 max-w-xs align-middle bg-gray-100 "
+            >
               Exit Quiz
             </div>
           </Link>
