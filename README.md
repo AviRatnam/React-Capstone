@@ -11,4 +11,4 @@ Assuming you have NodeJS and npm installed:
 - `npm install tailwindcss` installs the styling components.
 
 Alternatively, you can check out the final product here:
-https://vercel.com/aviratnam/react-capstone
+https://react-capstone.vercel.app/profile
