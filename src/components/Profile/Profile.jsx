@@ -11,7 +11,7 @@ const Profile = () => {
   const [showprofile, setshowprofile] = useState(false);
 
   const username = "rithik";
-  const API = "http://rithik-capstone.herokuapp.com/api/student";
+  const API = "https://rithik-capstone.herokuapp.com/api/student";
 
   useEffect(() => {
     fetch(API)
@@ -34,7 +34,7 @@ const Profile = () => {
                 <span>Student Name: </span>
                 <span class="font-bold border-b-2 border-black">
                   {data.name}
-                </span>{" "}
+                </span>
                 <br />
                 <br />
                 <span class="font-semibold">Quizzes Complete: </span>
