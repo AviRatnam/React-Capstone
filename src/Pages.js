@@ -1,10 +1,10 @@
 import { Route, Switch } from "react-router-dom";
-import QuizNew from "./components/Quiz/QuizNew";
-import ShowQuiz from "./components/Quiz/ShowQuiz";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateTest from "./components/CreateTest/CreateTest";
 import ShowNewerQuiz from "./components/Quiz/ShowNewerQuiz";
 import Lesson from "./components/Lesson/Lesson";
+import Profile from "./components/Profile/Profile";
+import QuizReport from "./components/Profile/QuizReport";
 
 const Pages = () =>{
     return(
@@ -16,8 +16,14 @@ const Pages = () =>{
             <Route path="/newquiz">
               <CreateTest />
             </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
             <Route path="/takequiz/:quizname">
               <ShowNewerQuiz />
+            </Route>
+            <Route path="/showreport/:username/:quizname">
+              <QuizReport />
             </Route>
             <Route path="/readlesson/:lessonname">
               <Lesson />
