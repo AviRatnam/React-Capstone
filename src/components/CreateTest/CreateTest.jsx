@@ -37,8 +37,6 @@ const CreateTest = () => {
     setCreateNewQuiz(!createNewQuiz);
   };
 
-  console.log(fetchquizdata);
-
   return (
     <>
       <div class=" grid md:grid-cols-5 ">

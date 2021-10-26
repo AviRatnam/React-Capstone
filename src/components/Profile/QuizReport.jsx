@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import CallSideMenu from "../CallSideMenu/CallSideMenu";
 import Header from "../Header/Header";
 import Title from "../Title/Title";
+import Cross from "./Cross";
+import Tickmark from "./Tickmark";
 
 const QuizReport = () => {
   const { username, quizname } = useParams();
@@ -30,15 +32,16 @@ const QuizReport = () => {
         {showreport && (
           <div>
             <Header>{reportdata.quizname}</Header>
-            {reportdata.questions.map((info) => (
+            <h1 class="text-left p-5"><b>Total Score: </b>{reportdata.score}</h1>
+            {reportdata.questions[0].map((info) => (
               <div class="p-5">
                 <div class="border-l-2 border-black text-left my-2">
                   <div class="px-2">{info.question}</div>
                 </div>
-
                 <div class="text-left mx-2 my-3">
+                  {info.selected.distractor === info.answer ? <Tickmark/> : <Cross /> }
                   <div>
-                    <b>Selected Answer:</b> {info.selected}
+                    <b>Selected Answer:</b> {info.selected.distractor}
                   </div>
                   <div>
                     <b>Answer:</b> {info.answer}{" "}

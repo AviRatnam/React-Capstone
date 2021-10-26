@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../UserContext";
 import CallSideMenu from "../CallSideMenu/CallSideMenu";
 import Header from "../Header/Header";
 import Title from "../Title/Title";
@@ -10,7 +11,10 @@ const Profile = () => {
   const [profile, setprofile] = useState(null);
   const [showprofile, setshowprofile] = useState(false);
 
-  const username = "rithik";
+  const [name,setname] = useContext(UserContext);
+
+  console.log(name);
+  
   const API = "https://rithik-capstone.herokuapp.com/api/student";
 
   useEffect(() => {
@@ -39,16 +43,19 @@ const Profile = () => {
                 <br />
                 <span class="font-semibold">Quizzes Complete: </span>
                 <br />
-                {data.taken.map((completed) => (
-                  <Link to={`/showreport/${data.name}/${completed}`}>
-                    <div class="p-2">
-                      <div class="inline-flex items-center bg-gray-100 rounded-md hover:bg-gray-200 p-2 max-w-xs gap-3 ">
-                        <div>{completed}</div>
-                        <Tickmark />
+                <div class="max-h-l overflow-auto">
+                  {data.taken.map((completed) => (
+                    <Link to={`/showreport/${data.name}/${completed}`}>
+                      <div class="p-2">
+                        <div class="inline-flex items-center bg-gray-100 rounded-md hover:bg-gray-200 p-2 max-w-xs gap-3 ">
+                          <div>{completed}</div>
+                          <Tickmark />
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+                </div>
+
                 <div class="border-b-2 border-gray-100 w-32 py-2"></div>
                 <span class="font-semibold">Quizzes Incomplete: </span>
                 <br />
