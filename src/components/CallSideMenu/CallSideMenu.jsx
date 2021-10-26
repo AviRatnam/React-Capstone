@@ -6,14 +6,15 @@ const CallSideMenu = () => {
     return(
         <div class="md:col-span-1 bg-gray-100 ">
         <div class="px-10 py-10 bg-gray-100 ">
-          <Link to="/">
+          <Link to="/dashboard">
             <Header> Capstone 2021</Header>
           </Link>
         </div>
         <div id="menu">
           <SideMenu target="/profile">Profile</SideMenu>
           <SideMenu target="/newquiz">Testing</SideMenu>
-          <SideMenu target="/">Learning</SideMenu>
+          <SideMenu target="/dashboard">Learning</SideMenu>
+          <SideMenu target="/">Logout</SideMenu>
         </div>
         <div class="px-10 py-10 bg-gray-100"></div>
         <div class="px-10 py-12 bg-gray-100"></div>

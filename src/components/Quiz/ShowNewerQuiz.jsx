@@ -1,13 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import Timer from "../Timer/Timer";
 import Title from "../Title/Title";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../UserContext";
 
 const ShowNewerQuiz = () => {
   const cardstyles =
     "flex flex-col justify-center gap-3 cursor-pointer items-center rounded-lg shadow-lg max-w-3xl p-5 ";
+  const defaultbutton = `p-2 bg-gray-100 hover:bg-gray-200 rounded-lg max-w-lg`;
+  const explanationbutton = `p-2 hover:bg-gray-100 rounded-lg max-w-lg`;
+
+  const [username, setusername] = useContext(UserContext);
 
   const [info, setinfo] = useState(null);
   const [showinfo, setshowinfo] = useState(false);
@@ -19,14 +24,10 @@ const ShowNewerQuiz = () => {
   const [showbutton, setshowbutton] = useState(false);
   const [showreport, setshowreport] = useState(false);
 
+  const [selectedoption, setselectedoption] = useState([]);
+
   const [questionscorrect, setquestionscorrect] = useState([]);
-  //const [optionscorrect, setoptionscorrect] = useState([]);
-
   const [questionsincorrect, setquestionsincorrect] = useState([]);
-  //const [optionsincorrect, setoptionsincorrect] = useState([]);
-
-  const defaultbutton = `p-2 bg-gray-100 hover:bg-gray-200 rounded-lg max-w-lg`;
-  const explanationbutton = `p-2 hover:bg-gray-100 rounded-lg max-w-lg`;
 
   // const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
   // const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
@@ -50,51 +51,54 @@ const ShowNewerQuiz = () => {
       console.log("correct");
       setscore(score + 1);
       setquestionscorrect([...questionscorrect, question]);
-      //setoptionscorrect([...optionscorrect,answer])
     } else {
       console.log("incorrect");
       setquestionsincorrect([...questionsincorrect, question]);
-      //setoptionsincorrect([...optionsincorrect,answer])
     }
+
+    setselectedoption([
+      ...selectedoption,
+      {
+        answer: answer,
+        question: question.question,
+        selected: value,
+      },
+    ]);
+
     setshowbutton(true);
   };
 
   useEffect(() => {
     setshowbutton(false);
-    if (activeindex === 9) {
+    if (activeindex === info?.questions?.length - 1) {
       setshowreport(true);
       setshowinfo(false);
     }
   }, [activeindex]);
 
-  //json data
-
-  useEffect(() => {
-    // const data = {
-    //   quizname,
-    //   score,
-    //   questionscorrect,
-    //   questionsincorrect,
-    // };
-
+  const sendreport = () => {
     const data = {
-      name: "avi",
+      name: username,
       quizzes: [
-        {"quizname":quizname, 
-        "correct questions":questionscorrect, 
-        "wrong questions":questionsincorrect, 
-        "score":score}
+        {
+          quizname: quizname,
+          score: score,
+          questions: [selectedoption],
+        },
       ],
     };
 
-    fetch("https://rithik-capstone.herokuapp.com/api/addreport?name=" + "avi", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    }).then(() => {
+    fetch(
+      "https://rithik-capstone.herokuapp.com/api/addreport?name=" + username,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }
+    ).then(() => {
       console.log("Report added");
     });
-  }, [showreport]);
+  };
 
   return (
     <div>
@@ -110,10 +114,6 @@ const ShowNewerQuiz = () => {
               {data.question}
             </div>
           ))}
-          {/* <h2>List of answers</h2>
-          {optionscorrect.map((data, i) => (
-            <div key={i} class={defaultbutton}>{data}</div>
-          ))} */}
 
           <Header>Questions you got wrong:</Header>
           {questionsincorrect.map((data, i) => (
@@ -121,13 +121,11 @@ const ShowNewerQuiz = () => {
               {data.question}
             </div>
           ))}
-          {/* <h2>List of answers</h2>
-          {optionsincorrect.map((data, i) => (
-            <div key={i} class={defaultbutton}>{data}</div>
-          ))} */}
+
           <Link to={`/newquiz`}>
             <div
               class="rounded-lg shadow-sm hover:shadow-md p-5 max-w-xs align-middle bg-gray-100 "
+              onClick={sendreport}
             >
               Exit Quiz
             </div>

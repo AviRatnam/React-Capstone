@@ -2,17 +2,18 @@ import "./App.css";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import Pages from "./Pages";
-import QuizNew from "./components/Quiz/QuizNew";
-import ShowNewerQuiz from "./components/Quiz/ShowNewerQuiz";
+import LoginCard from "./components/LoginCard/LoginCard";
+import { UserProvider } from "./UserContext";
 
 function App() {
-
   return (
-    <Router>
-      <div className="App">
-        <Pages />
-      </div>
-    </Router>
+    <UserProvider>
+      <Router>
+        <div className="App">
+          <Pages />
+        </div>
+      </Router>
+    </UserProvider>
   );
 }
 

@@ -1,12 +1,11 @@
 import Header from "../Header/Header";
 import Title from "../Title/Title";
 import { Link, useHistory } from "react-router-dom";
-import { useEffect } from "react";
 
 const AddQuizCard = ({ quizdata }) => {
   const newquizstyles = `rounded-lg shadow-md text-gray-700 px-5 py-5 flex-initial hover:shadow-lg cursor-pointer transition duration-500 ease-in-out max-w-lg`;
   const history = useHistory();
-  const API = "https://capstone.rithik.xyz/api/deletequiz";
+  const API = "https://rithik-capstone.herokuapp.com/api/deletequiz";
 
   const deleteQuiz = (id) => {
     const deletedata = new FormData();
