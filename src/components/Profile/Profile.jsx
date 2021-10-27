@@ -11,10 +11,10 @@ const Profile = () => {
   const [profile, setprofile] = useState(null);
   const [showprofile, setshowprofile] = useState(false);
 
-  const [name,setname] = useContext(UserContext);
+  const [name, setname] = useContext(UserContext);
 
   console.log(name);
-  
+
   const API = "https://rithik-capstone.herokuapp.com/api/student";
 
   useEffect(() => {
@@ -30,7 +30,9 @@ const Profile = () => {
     <div class="grid md:grid-cols-5 ">
       <CallSideMenu />
       <div class="col-span-4 px-5 py-5 gap-x-10 gap-y-10 ">
-        <Title>Profile</Title>
+        <div class="mb-5 ml-2">
+          <Title>Profile</Title>
+        </div>
         <div class="grid md:grid-cols-3 gap-5">
           {showprofile &&
             profile.students.map((data) => (

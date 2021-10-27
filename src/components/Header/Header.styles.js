@@ -2,7 +2,7 @@ const headerclass = `
                 font-bold
                 uppercase
                 p-4
-                border-b border-gray-200
+                border-b border-black
                 hover:text-gray-700
               `;
 

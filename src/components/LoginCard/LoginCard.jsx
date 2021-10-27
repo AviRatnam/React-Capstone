@@ -22,7 +22,7 @@ const LoginCard = (props) => {
   };
 
   return (
-    <div class="w-screen h-screen flex justify-center items-center">
+    <div class="w-screen h-screen flex justify-center items-center bg-blue-200">
       <div class={logincardclass}>
         <form onSubmit={adduser}>
           <span>Username: </span>

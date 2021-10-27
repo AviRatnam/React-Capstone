@@ -32,7 +32,7 @@ const QuizReport = () => {
         {showreport && (
           <div>
             <Header>{reportdata.quizname}</Header>
-            <h1 class="text-left p-5"><b>Total Score: </b>{reportdata.score}</h1>
+            <h1 class="text-left p-5 text-lg"><b>Total Score: </b>{reportdata.score}</h1>
             {reportdata.questions[0].map((info) => (
               <div class="p-5">
                 <div class="border-l-2 border-black text-left my-2">
@@ -44,7 +44,7 @@ const QuizReport = () => {
                     <b>Selected Answer:</b> {info.selected.distractor}
                   </div>
                   <div>
-                    <b>Answer:</b> {info.answer}{" "}
+                    <b>Answer:</b> {info.answer}
                   </div>
                 </div>
                 <div class="border-b-2 border-gray-400 w- w-32" />

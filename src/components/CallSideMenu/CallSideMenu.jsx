@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const CallSideMenu = () => {
     return(
-        <div class="md:col-span-1 bg-gray-100 ">
-        <div class="px-10 py-10 bg-gray-100 ">
+        <div class="md:col-span-1 bg-yellow-300 h-screen">
+        <div class="px-10 py-10 bg-yellow-300">
           <Link to="/dashboard">
             <Header> Capstone 2021</Header>
           </Link>
@@ -16,8 +16,7 @@ const CallSideMenu = () => {
           <SideMenu target="/dashboard">Learning</SideMenu>
           <SideMenu target="/">Logout</SideMenu>
         </div>
-        <div class="px-10 py-10 bg-gray-100"></div>
-        <div class="px-10 py-12 bg-gray-100"></div>
+        
       </div>
     )
 }
