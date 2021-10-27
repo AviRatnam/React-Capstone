@@ -33,9 +33,6 @@ const ShowNewerQuiz = () => {
 
   const [isanswercorrect, setisanswercorrect] = useState(false);
 
-  // const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
-  // const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
-
   const quiz_api =
     "https://rithik-capstone.herokuapp.com/api/getquiz?quizname=";
   const { quizname } = useParams();
