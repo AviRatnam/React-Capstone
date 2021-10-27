@@ -32,11 +32,13 @@ const Lesson = () => {
             <span>{info.summarized_text}</span>
           </div>
 
+          <div class="my-5">
           <Link to={`/takequiz/${info.quizname}`}>
             <div class="rounded-lg shadow-md bg-blue-100 hover:shadow-lg hover:bg-blue-200 p-3 max-w-xs ">
               Take the quiz!
             </div>
           </Link>
+          </div>
         </div>
       )}
     </div>

@@ -5,6 +5,8 @@ import Title from "../Title/Title";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../UserContext";
+import Tickmark from "../Profile/Tickmark";
+import Cross from "../Profile/Cross";
 
 const ShowNewerQuiz = () => {
   const cardstyles =
@@ -29,6 +31,8 @@ const ShowNewerQuiz = () => {
   const [questionscorrect, setquestionscorrect] = useState([]);
   const [questionsincorrect, setquestionsincorrect] = useState([]);
 
+  const [isanswercorrect, setisanswercorrect] = useState(false);
+
   // const correctanswerbutton = `p-2 bg-green-200 rounded-lg max-w-lg`;
   // const wronganswerbutton = `p-2 bg-red-200 rounded-lg max-w-lg`;
 
@@ -48,11 +52,11 @@ const ShowNewerQuiz = () => {
 
   const checkanswer = (value, answer, question) => {
     if (value.distractor === answer) {
-      console.log("correct");
+      setisanswercorrect(true);
       setscore(score + 1);
       setquestionscorrect([...questionscorrect, question]);
     } else {
-      console.log("incorrect");
+      setisanswercorrect(false);
       setquestionsincorrect([...questionsincorrect, question]);
     }
 
@@ -168,6 +172,17 @@ const ShowNewerQuiz = () => {
                 </div>
               ))}
             </div>
+            {showbutton &&
+              (isanswercorrect ? (
+                <div class="mx-2">
+                  <Tickmark />
+                </div>
+              ) : (
+                <div class="mx-2">
+                  <Cross />
+                </div>
+              ))}
+
             {showbutton && (
               <button
                 class="justify-end mx-5 border-b-2 border-black"
