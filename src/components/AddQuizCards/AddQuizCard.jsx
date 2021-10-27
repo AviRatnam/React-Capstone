@@ -7,17 +7,17 @@ const AddQuizCard = ({ quizdata }) => {
   const history = useHistory();
   const API = "https://rithik-capstone.herokuapp.com/api/deletequiz";
 
-  const deleteQuiz = (id) => {
-    const deletedata = new FormData();
-    deletedata.append("quizname", id);
-    fetch(API, {
-      method: "POST",
-      body: deletedata,
-    }).then(() => {
-      //history.push("/newquiz");
-      window.location.reload();
-    });
-  };
+  // const deleteQuiz = (id) => {
+  //   const deletedata = new FormData();
+  //   deletedata.append("quizname", id);
+  //   fetch(API, {
+  //     method: "POST",
+  //     body: deletedata,
+  //   }).then(() => {
+  //     //history.push("/newquiz");
+  //     window.location.reload();
+  //   });
+  // };
 
   return (
     <div class="grid md:grid-columns-2 py-3">
@@ -26,7 +26,7 @@ const AddQuizCard = ({ quizdata }) => {
         {quizdata.quizcards.map((quiz) => (
           <div class={newquizstyles} key={quiz.id}>
             <Link to={`/takequiz/${quiz.quizname}`}>
-              <div class="relative" onClick={() => deleteQuiz(quiz.quizname)}>
+              {/* <div class="relative" onClick={() => deleteQuiz(quiz.quizname)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6"
@@ -41,7 +41,7 @@ const AddQuizCard = ({ quizdata }) => {
                     d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-              </div>
+              </div> */}
               <Title>{quiz.chapter}</Title>
               <Header>{quiz.quizname}</Header>
               <ul>

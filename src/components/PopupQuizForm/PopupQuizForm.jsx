@@ -32,13 +32,14 @@ const PopupQuizForm = () => {
     data.append("seconds", seconds);
     data.append("file", pdf.files[0]);
 
-    fetch("https://capstone.rithik.xyz/api/makequiz", {
-      method: "POST",
-      body: data,
-    }).then(() => {
-      alert("Quiz added!");
-      window.location.reload();
-    });
+    alert("Quiz added!");
+    // fetch("https://capstone.rithik.xyz/api/makequiz", {
+    //   method: "POST",
+    //   body: data,
+    // }).then(() => {
+    //   alert("Quiz added!");
+    //   window.location.reload();
+    // });
   };
 
   return (
@@ -90,7 +91,7 @@ const PopupQuizForm = () => {
               />
               <span>Seconds </span>
             </div>
-            <br/>
+            <br />
             <div>
               <span>Enter pdf </span>
               <input
@@ -101,8 +102,10 @@ const PopupQuizForm = () => {
                 }}
               />
             </div>
-            <br/>
-            <button class="rounded-lg shadow-md bg-green-100 px-3 py-2 hover:bg-green-200 hover:shadow-lg">Create Quiz</button>
+            <br />
+            <button class="rounded-lg shadow-md bg-green-100 px-3 py-2 hover:bg-green-200 hover:shadow-lg">
+              Create Quiz
+            </button>
           </div>
         </form>
       </div>
