@@ -12,9 +12,6 @@ const CreateTest = () => {
   const [createNewQuiz, setCreateNewQuiz] = useState(false);
   const [fetchquizdata, setfetchquizdata] = useState(null);
 
-  console.log(userrole);
-  console.log(userrole === "teacher");
-
   useEffect(() => {
     const abortCont = new AbortController();
     //const api_endpoint = 'https://capstone.rithik.xyz/api/getquizcards';
