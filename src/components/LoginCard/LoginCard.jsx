@@ -30,25 +30,38 @@ const LoginCard = (props) => {
     <div class="w-screen h-screen flex justify-center items-center bg-blue-200">
       <div class={logincardclass}>
         <form onSubmit={adduser}>
-          <span>Username: </span>
+          <span class="text-md font-semibold">Username: </span>
           <input
             type="text"
             value={username}
             onChange={(e) => setusername(e.target.value)}
             required
+            class="border border-gray-200 rounded-lg"
           />
-          <span>Password: </span>
+          <span class="text-md font-semibold px-2">Password: </span>
           <input
             type="password"
             value={password}
             onChange={(e) => setpassword(e.target.value)}
+            class="border border-gray-200 rounded-lg"
           />
-          <div class="flex gap-5 justify-center pt-5">
-            <button onClick={() => setuserrole("student")}>Student</button>
-            <button onClick={() => setuserrole("teacher")}>Teacher</button>
+          <div class="flex gap-5 justify-center pt-5 items-center">
+            <div class="text-lg font-semibold">Are you a..</div>
+            <button
+              onClick={() => setuserrole("student")}
+              class="bg-black text-white px-5 py-3 rounded-lg hover:bg-white hover:text-black border hover:border-black "
+            >
+              Student
+            </button>
+            <button
+              onClick={() => setuserrole("teacher")}
+              class="bg-white text-black border border-black px-5 py-3 rounded-lg hover:bg-black hover:text-white "
+            >
+              Teacher
+            </button>
           </div>
           <div className="py-5" />
-          <button class="border-b-2 border-gray-300 text-gray-400">
+          <button class="border-b-2 border-black text-black text-lg">
             Enter
           </button>
         </form>
