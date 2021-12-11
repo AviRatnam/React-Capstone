@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const CallSideMenu = () => {
     return(
-        <div class="md:col-span-1 bg-yellow-300 h-screen">
+        <div class="md:col-span-1 bg-yellow-300 h-screen rounded-b-md">
         <div class="px-10 py-10 bg-yellow-300">
           <Link to="/dashboard">
             <Header> Capstone 2021</Header>
