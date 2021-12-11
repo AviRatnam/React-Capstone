@@ -9,6 +9,8 @@ const LoginCard = (props) => {
   const [value, setvalue] = useContext(UserContext);
   const [user_role, setuser_role] = useContext(RoleContext);
 
+  const API = "https://rithik-capstone.herokuapp.com/api/login";
+
   const history = useHistory();
 
   const [username, setusername] = useState("");
@@ -21,8 +23,20 @@ const LoginCard = (props) => {
 
   const adduser = (e) => {
     e.preventDefault();
-    //const temp = { username: username, password: password };
     setvalue(username);
+
+    const finalname = {
+      "name": username,
+    };
+
+    if(userrole === "student"){
+      fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(finalname),
+      }).catch((e) => console.error(e));  
+    }
+
     history.push("/dashboard");
   };
 
@@ -47,21 +61,24 @@ const LoginCard = (props) => {
           />
           <div class="flex gap-5 justify-center pt-5 items-center">
             <div class="text-lg font-semibold">Are you a..</div>
-            <button
+            <div
               onClick={() => setuserrole("student")}
-              class="bg-black text-white px-5 py-3 rounded-lg hover:bg-white hover:text-black border hover:border-black "
+              class="bg-black text-white px-5 py-3 rounded-lg hover:bg-white hover:text-black border hover:border-black cursor-pointer "
             >
               Student
-            </button>
-            <button
+            </div>
+            <div
               onClick={() => setuserrole("teacher")}
-              class="bg-white text-black border border-black px-5 py-3 rounded-lg hover:bg-black hover:text-white "
+              class="bg-white text-black border border-black px-5 py-3 rounded-lg hover:bg-black hover:text-white cursor-pointer"
             >
               Teacher
-            </button>
+            </div>
           </div>
           <div className="py-5" />
-          <button class="border-b-2 border-black text-black text-lg">
+          <button
+            type="submit"
+            class="border-b-2 border-black text-black text-lg"
+          >
             Enter
           </button>
         </form>

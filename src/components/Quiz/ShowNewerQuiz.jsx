@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../UserContext";
 import Tickmark from "../Profile/Tickmark";
 import Cross from "../Profile/Cross";
+import { RoleContext } from "../../RoleContext";
 
 const ShowNewerQuiz = () => {
   const cardstyles =
@@ -15,6 +16,7 @@ const ShowNewerQuiz = () => {
   const explanationbutton = `p-2 hover:bg-gray-100 rounded-lg max-w-lg`;
 
   const [username, setusername] = useContext(UserContext);
+  const [userrole, setuserrole] = useContext(RoleContext);
 
   const [info, setinfo] = useState(null);
   const [showinfo, setshowinfo] = useState(false);
@@ -124,12 +126,18 @@ const ShowNewerQuiz = () => {
           ))}
 
           <Link to={`/newquiz`}>
-            <div
-              class="rounded-lg shadow-sm hover:shadow-md p-5 max-w-xs align-middle bg-gray-100 "
-              onClick={sendreport}
-            >
-              Exit Quiz
-            </div>
+            {userrole === "teacher" ? (
+              <div class="rounded-lg shadow-sm hover:shadow-md p-5 max-w-xs align-middle bg-gray-100 ">
+                End Quiz
+              </div>
+            ) : (
+              <div
+                class="rounded-lg shadow-sm hover:shadow-md p-5 max-w-xs align-middle bg-gray-100 "
+                onClick={sendreport}
+              >
+                Exit Quiz
+              </div>
+            )}
           </Link>
         </div>
       )}

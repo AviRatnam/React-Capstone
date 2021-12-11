@@ -32,14 +32,14 @@ const PopupQuizForm = () => {
     data.append("seconds", seconds);
     data.append("file", pdf.files[0]);
 
-    alert("Quiz added!");
-    // fetch("https://capstone.rithik.xyz/api/makequiz", {
-    //   method: "POST",
-    //   body: data,
-    // }).then(() => {
-    //   alert("Quiz added!");
-    //   window.location.reload();
-    // });
+    // alert("Quiz added!");
+    fetch("https://cap.rithik.xyz/api/makequiz", {
+      method: "POST",
+      body: data,
+    }).then(() => {
+      alert("Quiz added!");
+      // window.location.reload();
+    });
   };
 
   return (
