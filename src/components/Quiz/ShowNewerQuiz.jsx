@@ -71,6 +71,10 @@ const ShowNewerQuiz = () => {
     setshowbutton(true);
   };
 
+  const changeoptionstyle = (value, answer) => {
+    return value.distractor === answer;
+  };
+
   useEffect(() => {
     setshowbutton(false);
     if (activeindex === info?.questions?.length - 1) {
@@ -169,7 +173,17 @@ const ShowNewerQuiz = () => {
                 >
                   {distractor.distractor}
                   {showbutton && (
-                    <div class={explanationbutton}>
+                    <div
+                      class={
+                        showbutton &&
+                        changeoptionstyle(
+                          distractor,
+                          info.questions[activeindex].correct_answer
+                        )
+                          ? "bg-green-200 rounded-lg p-2 "
+                          : explanationbutton
+                      }
+                    >
                       <b>Meaning: </b>
                       {distractor.meaning}
                     </div>
