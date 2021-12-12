@@ -1,12 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { RoleContext } from "../../RoleContext";
-import { UserContext } from "../../UserContext";
-import CallSideMenu from "../CallSideMenu/CallSideMenu";
-import Header from "../Header/Header";
-import Title from "../Title/Title";
+
 import Exclaim from "./Exclaim";
 import Progressbar from "./progressbar";
+import Star from "./Star";
 import Tickmark from "./Tickmark";
 
 const StudentProfile = ({ studentname }) => {
@@ -39,14 +36,36 @@ const StudentProfile = ({ studentname }) => {
     else return <Progressbar bgcolor="red" progress={value} height={10} />;
   }
 
+  function getLevel(val) {
+    const value = val;
+
+    return (
+      <div className="text-lg text-indigo-500 font-semibold flex items-center gap-3">
+        <div>Level: </div>
+        <div className="flex items-center gap-1">
+          <Star />
+          {Math.round(value / 3, 2)}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       {!showprofile ? (
         <div>Loading</div>
       ) : (
         <div class="p-5 text-left shadow-lg rounded-lg w-1/2 ">
-          <span>Student Name: </span>
-          <span class="font-bold border-b-2 border-black">{profile.name}</span>
+          <div className="flex items-center gap-2 justify-between">
+            <div>
+              <span>Student Name: </span>
+              <span class="font-bold border-b-2 border-black">
+                {profile.name}
+              </span>
+            </div>
+            <div>{getLevel(profile.total_score)}</div>
+          </div>
+
           <div class="pt-5">
             {checkProgress(
               Math.round((profile.total_score / profile.max_score) * 100, 2)

@@ -17,6 +17,9 @@ const LoginCard = (props) => {
   const [password, setpassword] = useState("");
   const [userrole, setuserrole] = useState("");
 
+  const [selectedstudentstyle, setselectedstudentstyle] = useState(false);
+  const [selectedteacherstyle, setselectedteacherstyle] = useState(false);
+
   console.log(value);
   console.log(userrole);
   setuser_role(userrole);
@@ -26,15 +29,15 @@ const LoginCard = (props) => {
     setvalue(username);
 
     const finalname = {
-      "name": username,
+      name: username,
     };
 
-    if(userrole === "student"){
+    if (userrole === "student") {
       fetch(API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(finalname),
-      }).catch((e) => console.error(e));  
+      }).catch((e) => console.error(e));
     }
 
     history.push("/dashboard");
@@ -62,14 +65,30 @@ const LoginCard = (props) => {
           <div class="flex gap-5 justify-center pt-5 items-center">
             <div class="text-lg font-semibold">Are you a..</div>
             <div
-              onClick={() => setuserrole("student")}
-              class="bg-black text-white px-5 py-3 rounded-lg hover:bg-white hover:text-black border hover:border-black cursor-pointer "
+              onClick={() => {
+                setselectedstudentstyle(true);
+                setselectedteacherstyle(false);
+                setuserrole("student");
+              }}
+              class={
+                selectedstudentstyle
+                  ? "bg-black text-white px-5 py-3 rounded-lg border  cursor-pointer "
+                  : "bg-white text-black border border-black px-5 py-3 rounded-lg  cursor-pointer"
+              }
             >
               Student
             </div>
             <div
-              onClick={() => setuserrole("teacher")}
-              class="bg-white text-black border border-black px-5 py-3 rounded-lg hover:bg-black hover:text-white cursor-pointer"
+              onClick={() => {
+                setselectedstudentstyle(false);
+                setselectedteacherstyle(true);
+                setuserrole("teacher");
+              }}
+              class={
+                selectedteacherstyle
+                  ? "bg-black text-white px-5 py-3 rounded-lg  cursor-pointer "
+                  : "bg-white text-black border border-black px-5 py-3 rounded-lg cursor-pointer"
+              }
             >
               Teacher
             </div>

@@ -32,7 +32,7 @@ const Dashboard = () => {
           <Title>Begin Learning</Title>
           <Header>New Lessons</Header>
         </div>
-        <div class="md:grid	grid-cols-3 gap-3">
+        <div class="md:grid	grid-cols-2 gap-3">
           {showsubjects &&
             subjects.quizcards.map((info) => (
               <Link to={`/readlesson/${info.quizname}`}>

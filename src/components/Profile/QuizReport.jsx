@@ -39,9 +39,9 @@ const QuizReport = () => {
                   <div class="px-2">{info.question}</div>
                 </div>
                 <div class="text-left mx-2 my-3">
-                  {info.selected.distractor === info.answer ? <Tickmark/> : <Cross /> }
-                  <div>
+                  <div class="flex items-center gap-2">
                     <b>Selected Answer:</b> {info.selected.distractor}
+                    <div>{info.selected.distractor === info.answer ? <Tickmark/> : <Cross /> }</div>
                   </div>
                   <div>
                     <b>Answer:</b> {info.answer}

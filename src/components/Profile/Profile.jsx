@@ -9,6 +9,7 @@ import Exclaim from "./Exclaim";
 import Progressbar from "./progressbar";
 import StudentProfile from "./StudentProfile";
 import Tickmark from "./Tickmark";
+import Star from "./Star";
 
 const Profile = () => {
   const [profile, setprofile] = useState(null);
@@ -57,6 +58,20 @@ const Profile = () => {
     else return <Progressbar bgcolor="red" progress={value} height={10} />;
   }
 
+  function getLevel(val) {
+    const value = val;
+
+    return (
+      <div className="text-lg text-indigo-500 font-semibold flex items-center gap-3">
+        <div>Level: </div>
+        <div className="flex items-center gap-1">
+          <Star />
+          {Math.round(value / 3, 2)}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div class="grid md:grid-cols-5 ">
       <CallSideMenu />
@@ -71,10 +86,15 @@ const Profile = () => {
             ) : (
               profile.students.map((data) => (
                 <div class="p-5 text-left shadow-lg rounded-lg ">
-                  <span>Student Name: </span>
-                  <span class="font-bold border-b-2 border-black">
-                    {data.name}
-                  </span>
+                  <div className="flex items-center gap-2 justify-between">
+                    <div>
+                      <span>Student Name: </span>
+                      <span class="font-bold border-b-2 border-black">
+                        {data.name}
+                      </span>
+                    </div>
+                    <div>{getLevel(data.total_score)}</div>
+                  </div>
                   <div class="pt-5">
                     {checkProgress(
                       Math.round((data.total_score / data.max_score) * 100, 2)
