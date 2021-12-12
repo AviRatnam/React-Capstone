@@ -7,4 +7,6 @@ The app is built with the intention of being able to test and pin-point the conc
 Randomly generated questions, along with unique distractors based on several factors (such as an antonym, word type, meaning) paired along side an accurate explanation for the same using Cosine- Vector Similarity, help a student better understand their problem.
 
 You can check out the final product here:
-https://react-capstone.vercel.app/profile
+https://react-capstone.vercel.app
+
+Please note: This app was created while I was learning React and other relevant technology, this product showcases a progress in my learning.
